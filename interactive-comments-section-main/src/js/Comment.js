@@ -2,7 +2,7 @@ export class Comment{
 
     constructor(author){
         this.author = author
-        this.postingTime = 0
+        this.postingTime = "1 week ago"
         this.amountOfComments = 0
         this.amountOfLikes = 0
     }
