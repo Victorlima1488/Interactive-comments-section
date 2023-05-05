@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="./css/style.css">
-  <script src="./src/js/index.js" defer></script>
+  <script type="module" src="./src/js/index.js" defer></script>
   <title>Interactive comments section</title>
 </head>
 <body>
 
   <header>
-    <div class="title">Comment Section</div>
+    <h1 class="title">Comment Section</h1>
     <nav>
       <ul>
         <li>Log in</li>
@@ -22,12 +22,27 @@
   </header>
 
   <main>
-    <ul id="comments"></ul>
+    <ul id="comments">
+      <li>
+
+        <div class="headComment">
+          <div id="profileAndPostingTime">
+            <div id="profilePicture"></div>
+            <div id="userName">Victor Lima</div>
+            <div id="postingTime">1 week ago</div>
+          </div>
+  
+          <img id="reply" src="./images/icon-reply.svg" alt="Reply">
+        </div>
+
+        <div id="commentText"></div>
+      </li>
+    </ul>
   </main>
   
   <div class="createComment">
-    <div class="photo"></div>
-    <div class="addComment"></div>
+    <div id="profilePicture"></div>
+    <textarea id="addComment" placeholder="Add a commnet..."></textarea>
     <button id="sendComment">Send</div>
   </div>
   <!-- <div class="attribution">

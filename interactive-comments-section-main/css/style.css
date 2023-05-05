@@ -1,14 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-family: "Rubik", sans-serif;
 }
 
 body {
-  background-color: #C3C4EF;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background-color: #EAECF1;
   height: 100vh;
 }
 
@@ -27,30 +26,119 @@ header nav ul {
 
 main {
   width: 65vw;
-  height: 398px;
-  margin: 0 auto;
-  border: solid black 2px;
+  height: 546px;
+  margin: 30px auto 30px auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+main::-webkit-scrollbar {
+  display: none;
 }
 main ul {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 30px;
+  padding: 15px 0 0 10px;
 }
 main ul li {
-  width: 300px;
-  height: 100px;
-  border: solid black 2px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-width: 500px;
+  max-width: 800px;
+  min-height: 150px;
+  max-height: 250px;
+  background-color: #FFFFFF;
+  word-wrap: break-word;
+  padding: 25px;
+  border-radius: 10px;
+  border: solid black 1px;
+}
+main ul li .headComment {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+main ul li .headComment #profileAndPostingTime {
+  display: flex;
+}
+main ul li .headComment #profileAndPostingTime #userName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 50px;
+  border: solid black 1px;
+}
+main ul li .headComment #profileAndPostingTime #postingTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 50px;
+  border: solid black 1px;
+}
+main ul li .headComment #reply {
+  border: solid black 1px;
+  width: 21px;
+  height: 20px;
+}
+main ul #commentText {
+  border: solid black 1px;
+  width: 100%;
+  height: 60%;
+}
+
+#profilePicture {
+  border: solid black 1px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .createComment {
-  width: 60vw;
+  position: absolute;
+  bottom: 45px;
+  left: 326px;
+  width: 52vw;
   height: 130px;
-  border: solid black 2px;
-  margin: 0 auto 30px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #FFF;
+}
+.createComment #addComment {
+  width: 480px;
+  height: 100px;
+  border: solid rgb(213, 214, 216) 1px;
+  text-align: left;
+  background-color: #FFF;
+  padding: 4px 6px;
+  resize: none;
+  font-size: 17px;
+}
+.createComment #addComment::placeholder {
+  font-size: 18px;
+  padding-left: 5px;
+}
+.createComment #addComment:focus {
+  padding-top: 5px;
+  outline: none;
+  caret-color: gray;
+}
+.createComment #sendComment {
+  width: 90px;
+  height: 50px;
+  cursor: pointer;
+  color: #FFF;
+  background-color: #6d6ff0;
+  border: none;
+  border-radius: 30px;
 }
 
 /*# sourceMappingURL=style.css.map */
