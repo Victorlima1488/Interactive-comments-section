@@ -32,6 +32,10 @@ const createComment = () =>{
         }, 1000);
 
 
+        const divReply = document.createElement("div")
+        divReply.id = "divReply"
+        const textReply = document.createElement("div")
+        textReply.textContent = "Reply"
         const reply = document.createElement("img")
         reply.id = "reply"
         reply.src = "./images/icon-reply.svg"
@@ -43,7 +47,9 @@ const createComment = () =>{
         profileAndPostingTime.appendChild(userName)
         profileAndPostingTime.appendChild(postingTime)
         headComment.appendChild(profileAndPostingTime)
-        headComment.appendChild(reply)
+        divReply.appendChild(reply)
+        divReply.appendChild(textReply) 
+        headComment.appendChild(divReply)
         li.appendChild(headComment)
         li.appendChild(commentText)
         comments.appendChild(li)
