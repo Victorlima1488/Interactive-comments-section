@@ -19,15 +19,14 @@ export class Comment{
                 console.log("now")
                 this.setPostingTime("now")
                 if(this.getUpdateInterval() === 60) c += 1
-            }else if(this.getUpdateInterval() <= (60 * c)){
+            }else if(this.getUpdateInterval() <= (60 * c) && c < 60){
                 console.log(`${c-1} min ago`)
                 this.setPostingTime(`${c-1} min ago`)
-                if(this.getUpdateInterval() === 60 * c) c += 1
-                if(this.getUpdateInterval() === (60 * 60) - 1) c = 1
-            }else if(this.getUpdateInterval() < (60 * 60)){
-                console.log(`${c} hour ago`)
-                c += 1
-                if(this.getUpdateInterval() === (60 * 60 * 24) - 1) c = 1
+                if(this.getUpdateInterval() === (60 * c)) c += 1
+                if(c === 60) c = 2
+            }else if(this.getUpdateInterval() < (60 * 60) * c){
+                console.log(`${c-1} hour ago`)
+                if(this.getUpdateInterval() === (60 * 60 * c)) c += 1
             }else if(this.getUpdateInterval() > (60 * 60 * 24)){
                 console.log(`${c} day ago`)
                 c += 1

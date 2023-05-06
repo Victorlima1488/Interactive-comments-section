@@ -23,14 +23,12 @@ const createComment = () =>{
         userName.id = "userName"
         userName.textContent = newcomment.getAuthor()
 
-
         const postingTime = document.createElement("div")
         postingTime.id = "postingTime"
         postingTime.textContent = newcomment.getPostingTime()
         setInterval(() => {
             postingTime.textContent = newcomment.getPostingTime();
         }, 1000);
-
 
         const divReply = document.createElement("div")
         divReply.id = "divReply"
