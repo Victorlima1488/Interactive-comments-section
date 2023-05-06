@@ -3,8 +3,15 @@ import { Comment } from "../js/Comment.js"
 const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
-const profileAndPostingTime = document.createElement("div")
+
+const delet = document.createElement("img")
+delet.id = "delet"
+delet.src = "./images/icon-delete.svg"
+delet.style.display = "none"
+
 const edit = document.createElement("img")
+edit.id = "edit"
+edit.src = "./images/icon-edit.svg"
 
 const createComment = () => {
     if(addComment.value){
@@ -16,6 +23,7 @@ const createComment = () => {
         const li = document.createElement("li")
         const headComment = document.createElement("div")
         headComment.id = "headComment"
+        const profileAndPostingTime = document.createElement("div")
         profileAndPostingTime.id = "profileAndPostingTime"
         const profilePicture = document.createElement("img")
         profilePicture.id = "profilePicture"
@@ -30,10 +38,7 @@ const createComment = () => {
         setInterval(() => {
             postingTime.textContent = newcomment.getPostingTime();
         }, 1000);
-
         
-        edit.id = "edit"
-        edit.src = "./images/icon-edit.svg"
         const divReply = document.createElement("div")
         divReply.id = "divReply"
         const textReply = document.createElement("div")
@@ -49,6 +54,7 @@ const createComment = () => {
         profileAndPostingTime.appendChild(userName)
         profileAndPostingTime.appendChild(postingTime)
         profileAndPostingTime.appendChild(edit)
+        profileAndPostingTime.appendChild(delet)
         headComment.appendChild(profileAndPostingTime)
         divReply.appendChild(reply)
         divReply.appendChild(textReply) 
@@ -62,19 +68,12 @@ const createComment = () => {
     }
 }
 
-const delet = () => {
-    
-    if(!document.getElementById("delet")){
-        const delet = document.createElement("img")
-        delet.id = "delet"
-        delet.src = "./images/icon-delete.svg"
-        // profileAndPostingTime.appendChild(delet)
-
-        // edit.id = "check"
-    }
-
+const deletFunction = () => {
+    delet.style.display = "block"
 }
 
 send.addEventListener("click", createComment)
 
-edit.addEventListener("click", delet)
+edit.addEventListener("click", deletFunction)
+
+
