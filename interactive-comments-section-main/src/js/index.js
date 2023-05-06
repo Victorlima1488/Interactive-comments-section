@@ -4,15 +4,6 @@ const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
 
-const delet = document.createElement("img")
-delet.id = "delet"
-delet.src = "./images/icon-delete.svg"
-delet.style.display = "none"
-
-const edit = document.createElement("img")
-edit.id = "edit"
-edit.src = "./images/icon-edit.svg"
-
 const createComment = () => {
     if(addComment.value){
 
@@ -39,6 +30,13 @@ const createComment = () => {
             postingTime.textContent = newcomment.getPostingTime();
         }, 1000);
         
+        const edit = document.createElement("img")
+        edit.id = "edit"
+        edit.src = "./images/icon-edit.svg"
+        const delet = document.createElement("img")
+        delet.id = "delet"
+        delet.src = "./images/icon-delete.svg"
+        delet.style.display = "none"
         const divReply = document.createElement("div")
         divReply.id = "divReply"
         const textReply = document.createElement("div")
@@ -73,7 +71,4 @@ const deletFunction = () => {
 }
 
 send.addEventListener("click", createComment)
-
-edit.addEventListener("click", deletFunction)
-
 
