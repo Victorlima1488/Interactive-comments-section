@@ -32,6 +32,7 @@ header nav ul li #buttonComments {
   background-color: transparent;
   border: none;
   padding: 10px;
+  font-size: 14px;
 }
 header nav ul li #buttonProfile {
   background-color: #6d6ff0;
