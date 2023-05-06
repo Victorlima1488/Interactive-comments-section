@@ -57,7 +57,6 @@ main ul li {
   background-color: #FFFFFF;
   padding: 25px;
   border-radius: 10px;
-  border: solid black 1px;
 }
 main ul li #headComment {
   width: 100%;
@@ -81,6 +80,7 @@ main ul li #headComment #profileAndPostingTime #postingTime {
   width: 100px;
   height: 50px;
   color: rgb(166, 168, 172);
+  font-style: italic;
 }
 main ul li #headComment #reply {
   width: 21px;
@@ -96,8 +96,6 @@ main ul #commentText {
 
 #profilePicture {
   border-radius: 50%;
-}
-#profilePicture img {
   width: 50px;
   height: 50px;
 }

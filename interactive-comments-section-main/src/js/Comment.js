@@ -2,9 +2,46 @@ export class Comment{
 
     constructor(author){
         this.author = author
-        this.postingTime = "1 week ago"
+        this.postingTime = "now"
         this.amountOfComments = 0
         this.amountOfLikes = 0
+        this.updateInterval = 0
+    }
+
+    creationTime(){
+        let c = 1
+        setInterval(()=>{
+            const now = this.getUpdateInterval() + 1
+            this.setUpdateInterval(now)
+            console.log(this.getUpdateInterval())
+
+            if(this.getUpdateInterval() <= 60){
+                console.log("now")
+                this.setPostingTime("now")
+                if(this.getUpdateInterval() === 60) c += 1
+            }else if(this.getUpdateInterval() <= (60 * c)){
+                console.log(`${c-1} min ago`)
+                this.setPostingTime(`${c-1} min ago`)
+                if(this.getUpdateInterval() === 60 * c) c += 1
+                if(this.getUpdateInterval() === (60 * 60) - 1) c = 1
+            }else if(this.getUpdateInterval() < (60 * 60)){
+                console.log(`${c} hour ago`)
+                c += 1
+                if(this.getUpdateInterval() === (60 * 60 * 24) - 1) c = 1
+            }else if(this.getUpdateInterval() > (60 * 60 * 24)){
+                console.log(`${c} day ago`)
+                c += 1
+                if(this.getUpdateInterval() === (60 * 60 * 24 * 7) - 1) c = 1
+            }else if(this.getUpdateInterval() > (60 * 60 * 24 * 7)){
+                console.log(`${c} week ago`)
+                c += 1
+                if(this.getUpdateInterval() > (60 * 60 * 24 * 7 * 30)) c = 1
+            }else{
+                console.log(`${c} month ago`)
+                c += 1
+            }
+            
+        }, 1000)  
     }
 
     setAuthor(author){
@@ -19,7 +56,7 @@ export class Comment{
         this.postingTime = postingTime
     }
 
-    getPostingTime(){
+    getPostingTime(){ 
         return this.postingTime
     }
 
@@ -37,5 +74,13 @@ export class Comment{
 
     getAmountOfLikes(){
         return this.amountOfLikes
+    }
+
+    setUpdateInterval(updateInterval){
+        this.updateInterval = updateInterval
+    }
+
+    getUpdateInterval(){
+        return this.updateInterval
     }
 }
