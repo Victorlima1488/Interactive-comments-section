@@ -3,8 +3,10 @@ import { Comment } from "../js/Comment.js"
 const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
+const profileAndPostingTime = document.createElement("div")
+const edit = document.createElement("img")
 
-const createComment = () =>{
+const createComment = () => {
     if(addComment.value){
 
         const newcomment = new Comment("Victor")
@@ -14,7 +16,6 @@ const createComment = () =>{
         const li = document.createElement("li")
         const headComment = document.createElement("div")
         headComment.id = "headComment"
-        const profileAndPostingTime = document.createElement("div")
         profileAndPostingTime.id = "profileAndPostingTime"
         const profilePicture = document.createElement("img")
         profilePicture.id = "profilePicture"
@@ -30,6 +31,9 @@ const createComment = () =>{
             postingTime.textContent = newcomment.getPostingTime();
         }, 1000);
 
+        
+        edit.id = "edit"
+        edit.src = "./images/icon-edit.svg"
         const divReply = document.createElement("div")
         divReply.id = "divReply"
         const textReply = document.createElement("div")
@@ -44,6 +48,7 @@ const createComment = () =>{
         profileAndPostingTime.appendChild(profilePicture)
         profileAndPostingTime.appendChild(userName)
         profileAndPostingTime.appendChild(postingTime)
+        profileAndPostingTime.appendChild(edit)
         headComment.appendChild(profileAndPostingTime)
         divReply.appendChild(reply)
         divReply.appendChild(textReply) 
@@ -57,4 +62,19 @@ const createComment = () =>{
     }
 }
 
+const delet = () => {
+    
+    if(!document.getElementById("delet")){
+        const delet = document.createElement("img")
+        delet.id = "delet"
+        delet.src = "./images/icon-delete.svg"
+        // profileAndPostingTime.appendChild(delet)
+
+        // edit.id = "check"
+    }
+
+}
+
 send.addEventListener("click", createComment)
+
+edit.addEventListener("click", delet)

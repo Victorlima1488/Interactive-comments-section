@@ -99,6 +99,26 @@ main{
                         font-style: italic;
                         font-size: 13px;
                     }
+                    #check{
+                        width: 30px;
+                        height: 30px;
+                        margin-top: 10px;
+                        cursor: pointer;
+                    }
+                    #edit{
+                        width: 14px;
+                        height: 14px;
+                        margin-top: 18px;
+                        padding-left: 6px;
+                        cursor: pointer;
+                    }
+                    #delet{
+                        width: 12px;
+                        height: 14px;
+                        margin-top: 18px;
+                        padding-left: 6px;
+                        cursor: pointer;
+                    }
                 }
                 #divReply{
                     display: flex;
