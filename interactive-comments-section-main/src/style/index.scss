@@ -206,6 +206,17 @@ main{
                 #replyUserName{
 
                 }
+                #replyCommentText{
+                    width: 100%;
+                    height: 60%;
+                    word-wrap: break-word;
+                    padding: 10px;
+                    #replyUserName{
+                        font-size: 13px;
+                        color: #afb0f0;
+                        cursor: pointer;
+                    }
+                }
             }
         }
     }
@@ -315,6 +326,18 @@ main{
         }
     }
     #sendComment{
+        width: 90px;
+        height: 50px;
+        cursor: pointer;
+        color: #FFF;
+        font-size: 17px;
+        background-color: #6d6ff0;
+        border: none;
+        border-radius: 30px;
+    }
+
+    #newSend{
+        display: none;
         width: 90px;
         height: 50px;
         cursor: pointer;
