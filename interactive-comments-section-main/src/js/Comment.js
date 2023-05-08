@@ -1,7 +1,8 @@
 export class Comment{
 
-    constructor(author){
+    constructor(author, userNAme){
         this.author = author
+        this.userNAme = userNAme
         this.postingTime = "now"
         this.amountOfComments = 0
         this.amountOfLikes = 0
@@ -49,6 +50,14 @@ export class Comment{
 
     getAuthor(){
         return this.author
+    }
+
+    setUserName(userNAme){
+        this.userNAme = userNAme
+    }
+
+    getUserName(){
+        return this.userNAme
     }
 
     setPostingTime(postingTime){

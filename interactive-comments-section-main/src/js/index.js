@@ -9,27 +9,27 @@ let c = 0
 const createComment = () => {
     if(addComment.value){
 
-        const newcomment = new Comment("Victor")
-        newcomment.creationTime()
+        const newComment = new Comment("Victor", "@_vitorlimaa_")
+        newComment.creationTime()
         let textComment = addComment.value
 
         const li = document.createElement("li")
-        const headComment = document.createElement("div")
-        headComment.id = "headComment"
+        const commentHeader = document.createElement("div")
+        commentHeader.id = "commentHeader"
         const profileAndPostingTime = document.createElement("div")
         profileAndPostingTime.id = "profileAndPostingTime"
         const profilePicture = document.createElement("img")
         profilePicture.id = "profilePicture"
         profilePicture.src = "./images/avatars/image-juliusomo.png"
-        const userName = document.createElement("div")
-        userName.id = "userName"
-        userName.textContent = newcomment.getAuthor()
+        const name = document.createElement("div")
+        name.id = "name"
+        name.textContent = newComment.getAuthor()
 
         const postingTime = document.createElement("div")
         postingTime.id = "postingTime"
-        postingTime.textContent = newcomment.getPostingTime()
+        postingTime.textContent = newComment.getPostingTime()
         setInterval(() => {
-            postingTime.textContent = newcomment.getPostingTime();
+            postingTime.textContent = newComment.getPostingTime();
         }, 1000);
          
         const check = document.createElement("img")
@@ -60,7 +60,10 @@ const createComment = () => {
             const confirmCancel = document.createElement("button")
             confirmCancel.textContent = "Cancel"
             confirmCancel.id = "confirmCancel"
+            const darkFun = document.createElement("div")
+            darkFun.id = "darkFun"
 
+            document.body.appendChild(darkFun)
             document.body.appendChild(popUp)
             popUp.appendChild(popUpTitle)
             popUp.appendChild(textPopUp)
@@ -73,13 +76,14 @@ const createComment = () => {
                 addComment.value = ""
 
                 popUp.remove()
+                darkFun.remove()
             })
 
             confirmCancel.addEventListener("click", () =>{
                 popUp.remove()
             })
         })
-        edit.addEventListener("click", (event) =>{
+        edit.addEventListener("click", () =>{
                 if(c === 0){
                     delet.style.display = "block"
                     c = 1
@@ -91,13 +95,11 @@ const createComment = () => {
                 edit.style.display = "none"
                 check.style.display = "block"
 
-                let postedCommentContent = commentText.textContent
-                console.log(postedCommentContent)
-
-                addComment.value = postedCommentContent
+                addComment.value = commentText.lastChild.textContent
+                addComment.focus()
 
                 check.addEventListener("click", () =>{
-                    commentText.textContent = addComment.value
+                    commentText.lastChild.textContent = addComment.value
 
                     edit.style.display = "block"
                     check.style.display = "none"
@@ -106,6 +108,10 @@ const createComment = () => {
                     addComment.value = ""
                 })
           });
+
+        const userName = document.createElement("span")
+        userName.id = "userName"
+        userName.textContent = newComment.getUserName()
         const divReply = document.createElement("div")
         divReply.id = "divReply"
         const textReply = document.createElement("div")
@@ -115,19 +121,21 @@ const createComment = () => {
         reply.src = "./images/icon-reply.svg"
         const commentText = document.createElement("div")
         commentText.id = "commentText"
-        commentText.textContent = textComment
 
         profileAndPostingTime.appendChild(profilePicture)
-        profileAndPostingTime.appendChild(userName)
+        profileAndPostingTime.appendChild(name)
         profileAndPostingTime.appendChild(postingTime)
         profileAndPostingTime.appendChild(edit)
         profileAndPostingTime.appendChild(check)
         profileAndPostingTime.appendChild(delet)
-        headComment.appendChild(profileAndPostingTime)
+        commentHeader.appendChild(profileAndPostingTime)
         divReply.appendChild(reply)
         divReply.appendChild(textReply) 
-        headComment.appendChild(divReply)
-        li.appendChild(headComment)
+        commentHeader.appendChild(divReply)
+        commentText.appendChild(userName)
+        commentText.appendChild(document.createTextNode(" "))
+        commentText.appendChild(document.createTextNode(textComment))
+        li.appendChild(commentHeader)
         li.appendChild(commentText)
         comments.appendChild(li)
 
@@ -136,3 +144,9 @@ const createComment = () => {
 }
 
 send.addEventListener("click", createComment)
+addComment.addEventListener("keyup", (event) =>{
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        createComment(event)
+    }
+});

@@ -75,23 +75,23 @@ main ul li {
   padding: 7px 15px 7px 7px;
   border-radius: 10px;
 }
-main ul li #headComment {
+main ul li #commentHeader {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-main ul li #headComment #profileAndPostingTime {
+main ul li #commentHeader #profileAndPostingTime {
   display: flex;
   gap: 10px;
 }
-main ul li #headComment #profileAndPostingTime #userName {
+main ul li #commentHeader #profileAndPostingTime #name {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
 }
-main ul li #headComment #profileAndPostingTime #postingTime {
+main ul li #commentHeader #profileAndPostingTime #postingTime {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,28 +100,28 @@ main ul li #headComment #profileAndPostingTime #postingTime {
   font-style: italic;
   font-size: 13px;
 }
-main ul li #headComment #profileAndPostingTime #check {
+main ul li #commentHeader #profileAndPostingTime #check {
   display: none;
   width: 30px;
   height: 30px;
   margin-top: 10px;
   cursor: pointer;
 }
-main ul li #headComment #profileAndPostingTime #edit {
+main ul li #commentHeader #profileAndPostingTime #edit {
   width: 14px;
   height: 14px;
   margin-top: 18px;
   padding-left: 6px;
   cursor: pointer;
 }
-main ul li #headComment #profileAndPostingTime #delet {
+main ul li #commentHeader #profileAndPostingTime #delet {
   width: 12px;
   height: 14px;
   margin-top: 18px;
   padding-left: 6px;
   cursor: pointer;
 }
-main ul li #headComment #divReply {
+main ul li #commentHeader #divReply {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -129,34 +129,114 @@ main ul li #headComment #divReply {
   font-weight: bold;
   cursor: pointer;
 }
-main ul li #headComment #divReply #reply {
+main ul li #commentHeader #divReply #reply {
   width: 21px;
   height: 20px;
 }
-main ul #commentText {
+main ul li #commentText {
   width: 100%;
   height: 60%;
   word-wrap: break-word;
   padding: 10px;
+}
+main ul li #commentText #userName {
+  font-size: 13px;
+  color: #afb0f0;
+  cursor: pointer;
+}
+main ul #replyComment {
+  position: relative;
+  left: 49px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 400px;
+  max-width: 500px;
+  min-height: 120px;
+  max-height: 250px;
+  background-color: #FFFFFF;
+  padding: 7px 15px 7px 7px;
+  border-radius: 10px;
+}
+main ul #replyComment #replycommentHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main ul #replyComment #replyProfileAndResponsePostingTime {
+  display: flex;
+  gap: 10px;
+}
+main ul #replyComment #replyName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+main ul #replyComment #replyPostingTime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color: rgb(166, 168, 172);
+  font-style: italic;
+  font-size: 13px;
+}
+main ul #replyComment #replyCheck {
+  display: none;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+main ul #replyComment #replyEdit {
+  width: 14px;
+  height: 14px;
+  margin-top: 18px;
+  padding-left: 6px;
+  cursor: pointer;
+}
+main ul #replyComment #replyDelet {
+  width: 12px;
+  height: 14px;
+  margin-top: 18px;
+  padding-left: 6px;
+  cursor: pointer;
+}
+
+#darkFun {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 }
 
 #pop-up {
   position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 26px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 250px;
-  height: 200px;
+  height: 165px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   z-index: 999;
   background-color: #FFF;
-  text-align: center;
+  text-align: left;
   padding: 15px;
-  font-size: 17px;
+  font-size: 14px;
+}
+#pop-up #textpopUp {
+  color: gray;
 }
 #pop-up #buttonsPopUp {
   display: flex;
@@ -164,9 +244,10 @@ main ul #commentText {
 }
 #pop-up #buttonsPopUp #confirmDelet, #pop-up #buttonsPopUp #confirmCancel {
   padding: 10px;
-  width: 78px;
+  width: 90px;
   cursor: pointer;
   border: none;
+  border-radius: 6px;
 }
 #pop-up #buttonsPopUp #confirmDelet {
   background-color: #ED6468;
@@ -178,6 +259,13 @@ main ul #commentText {
 }
 
 #profilePicture {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+#replyProfilePicture {
   border-radius: 50%;
   width: 50px;
   height: 50px;
