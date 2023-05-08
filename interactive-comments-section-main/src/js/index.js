@@ -20,7 +20,7 @@ const createComment = () => {
         profileAndPostingTime.id = "profileAndPostingTime"
         const profilePicture = document.createElement("img")
         profilePicture.id = "profilePicture"
-        profilePicture.src = "./images/avatars/image-juliusomo.png"
+        profilePicture.src = "./images/avatars/image-maxblagun.png"
         const name = document.createElement("div")
         name.id = "name"
         name.textContent = newComment.getAuthor()
@@ -38,10 +38,38 @@ const createComment = () => {
         const edit = document.createElement("img")
         edit.id = "edit"
         edit.src = "./images/icon-edit.svg"
+
+        edit.addEventListener("click", () =>{
+            if(c === 0){
+                delet.style.display = "block"
+                c = 1
+            }else{
+                delet.style.display = "none"
+                c = 0
+            }
+
+            edit.style.display = "none"
+            check.style.display = "block"
+
+            addComment.value = commentText.lastChild.textContent
+            addComment.focus()
+
+            check.addEventListener("click", () =>{
+                commentText.lastChild.textContent = addComment.value
+
+                edit.style.display = "block"
+                check.style.display = "none"
+                delet.style.display = "none"
+
+                addComment.value = ""
+            })
+        });
+
         const delet = document.createElement("img")
         delet.id = "delet"
         delet.src = "./images/icon-delete.svg"
         delet.style.display = "none"
+
         delet.addEventListener("click", () =>{
 
             const popUp = document.createElement("div")
@@ -83,31 +111,6 @@ const createComment = () => {
                 popUp.remove()
             })
         })
-        edit.addEventListener("click", () =>{
-                if(c === 0){
-                    delet.style.display = "block"
-                    c = 1
-                }else{
-                    delet.style.display = "none"
-                    c = 0
-                }
-
-                edit.style.display = "none"
-                check.style.display = "block"
-
-                addComment.value = commentText.lastChild.textContent
-                addComment.focus()
-
-                check.addEventListener("click", () =>{
-                    commentText.lastChild.textContent = addComment.value
-
-                    edit.style.display = "block"
-                    check.style.display = "none"
-                    delet.style.display = "none"
-
-                    addComment.value = ""
-                })
-          });
 
         const userName = document.createElement("span")
         userName.id = "userName"
@@ -119,6 +122,48 @@ const createComment = () => {
         const reply = document.createElement("img")
         reply.id = "reply"
         reply.src = "./images/icon-reply.svg"
+
+        reply.addEventListener("click", () =>{
+            const line = document.createElement("div")
+            line.id = "line"
+            const replyComment = document.createElement("div")
+            replyComment.id = "replyComment"
+            const replycommentHeader = document.createElement("div")
+            replycommentHeader.id = "replycommentHeader"
+            const replyProfileAndResponsePostingTime = document.createElement("div")
+            replyProfileAndResponsePostingTime.id = "replyProfileAndResponsePostingTime"
+            const replyProfilePicture = document.createElement("img")
+            replyProfilePicture.id = "replyProfilePicture"
+            replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
+            const replyName = document.createElement("div")
+            replyName.id = "replyName"
+            replyName.textContent = newComment.getUserName()
+            const replyPostingTime = document.createElement("div")
+            replyPostingTime.id = "replyPostingTime"
+            const replyEdit = document.createElement("img")
+            replyEdit.id = "replyEdit"
+            replyEdit.src = "./images/icon-edit.svg"
+            const replyCheck = document.createElement("img")
+            replyCheck.id = "replyCheck"
+            replyCheck.src = "./images/Icon-check.svg"
+            const replyDelet = document.createElement("img")
+            replyDelet.id = "replyDelet"
+            replyDelet.src = "./images/icon-delete.svg"
+
+            // edit.addEventListener("click",)
+
+            comments.appendChild(line)
+            line.appendChild(replyComment)
+            replyComment.appendChild(replycommentHeader)
+            replyComment.appendChild(commentText)
+            replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
+            replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
+            replyProfileAndResponsePostingTime.appendChild(replyName)
+            replyProfileAndResponsePostingTime.appendChild(replyPostingTime)
+            replyProfileAndResponsePostingTime.appendChild(replyEdit)
+            replyProfileAndResponsePostingTime.appendChild(replyCheck)
+            replyProfileAndResponsePostingTime.appendChild(replyDelet)
+        })
         const commentText = document.createElement("div")
         commentText.id = "commentText"
 

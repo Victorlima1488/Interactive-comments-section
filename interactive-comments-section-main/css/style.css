@@ -133,25 +133,21 @@ main ul li #commentHeader #divReply #reply {
   width: 21px;
   height: 20px;
 }
-main ul li #commentText {
-  width: 100%;
-  height: 60%;
-  word-wrap: break-word;
-  padding: 10px;
+main ul #line {
+  min-width: 200px;
+  max-width: 500px;
+  min-height: 120px;
+  max-height: 250px;
+  background-color: transparent;
+  border-left: #bdbdc2 1px solid;
+  border-radius: 0;
 }
-main ul li #commentText #userName {
-  font-size: 13px;
-  color: #afb0f0;
-  cursor: pointer;
-}
-main ul #replyComment {
+main ul #line #replyComment {
   position: relative;
   left: 49px;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
   min-width: 400px;
   max-width: 500px;
   min-height: 120px;
@@ -160,23 +156,23 @@ main ul #replyComment {
   padding: 7px 15px 7px 7px;
   border-radius: 10px;
 }
-main ul #replyComment #replycommentHeader {
+main ul #line #replyComment #replycommentHeader {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-main ul #replyComment #replyProfileAndResponsePostingTime {
+main ul #line #replyComment #replyProfileAndResponsePostingTime {
   display: flex;
   gap: 10px;
 }
-main ul #replyComment #replyName {
+main ul #line #replyComment #replyName {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
 }
-main ul #replyComment #replyPostingTime {
+main ul #line #replyComment #replyPostingTime {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,25 +181,36 @@ main ul #replyComment #replyPostingTime {
   font-style: italic;
   font-size: 13px;
 }
-main ul #replyComment #replyCheck {
+main ul #line #replyComment #replyCheck {
   display: none;
   width: 30px;
   height: 30px;
   margin-top: 10px;
   cursor: pointer;
 }
-main ul #replyComment #replyEdit {
+main ul #line #replyComment #replyEdit {
   width: 14px;
   height: 14px;
   margin-top: 18px;
   padding-left: 6px;
   cursor: pointer;
 }
-main ul #replyComment #replyDelet {
+main ul #line #replyComment #replyDelet {
   width: 12px;
   height: 14px;
   margin-top: 18px;
   padding-left: 6px;
+  cursor: pointer;
+}
+#commentText {
+  width: 100%;
+  height: 60%;
+  word-wrap: break-word;
+  padding: 10px;
+}
+#commentText #userName {
+  font-size: 13px;
+  color: #afb0f0;
   cursor: pointer;
 }
 

@@ -134,83 +134,94 @@ main{
                     }
                 }
             }
-            #commentText{
-                width: 100%;
-                height: 60%;
-                word-wrap: break-word;
-                padding: 10px;
-                #userName{
-                    font-size: 13px;
-                    color: #afb0f0;
-                    cursor: pointer;
-                }
-            }
+            
         }
-        #replyComment{
-            position: relative;
-            left: 49px;
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            min-width: 400px;
+        #line{
+            min-width: 200px;
             max-width: 500px;
             min-height: 120px;
             max-height: 250px;
-            background-color: #FFFFFF;
-            padding: 7px 15px 7px 7px;
-            border-radius: 10px;
-            #replycommentHeader{
-                width: 100%;
+            background-color: transparent;
+            border-left: #bdbdc2 1px solid;
+            border-radius: 0;
+            #replyComment{
+                position: relative;
+                left: 49px;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
-            }
-            #replyProfileAndResponsePostingTime{
-                display: flex;
-                gap: 10px;
-            }
-            #replyName{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 50px;
-            }
-            #replyPostingTime{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 50px;
-                color: rgb(166, 168, 172);
-                font-style: italic;
-                font-size: 13px;
-            }
-            #replyCheck{
-                display: none;
-                width: 30px;
-                height: 30px;
-                margin-top: 10px;
-                cursor: pointer;
-            }
-            #replyEdit{
-                width: 14px;
-                height: 14px;
-                margin-top: 18px;
-                padding-left: 6px;
-                cursor: pointer;
-            }
-            #replyDelet{
-                width: 12px;
-                height: 14px;
-                margin-top: 18px;
-                padding-left: 6px;
-                cursor: pointer;
+                min-width: 400px;
+                max-width: 500px;
+                min-height: 120px;
+                max-height: 250px;
+                background-color: #FFFFFF;
+                padding: 7px 15px 7px 7px;
+                border-radius: 10px;
+                #replycommentHeader{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                #replyProfileAndResponsePostingTime{
+                    display: flex;
+                    gap: 10px;
+                }
+                #replyName{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50px;
+                }
+                #replyPostingTime{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50px;
+                    color: rgb(166, 168, 172);
+                    font-style: italic;
+                    font-size: 13px;
+                }
+                #replyCheck{
+                    display: none;
+                    width: 30px;
+                    height: 30px;
+                    margin-top: 10px;
+                    cursor: pointer;
+                }
+                #replyEdit{
+                    width: 14px;
+                    height: 14px;
+                    margin-top: 18px;
+                    padding-left: 6px;
+                    cursor: pointer;
+                }
+                #replyDelet{
+                    width: 12px;
+                    height: 14px;
+                    margin-top: 18px;
+                    padding-left: 6px;
+                    cursor: pointer;
+                }
+                #replyUserName{
+
+                }
             }
         }
     }
 }
 
+#commentText{
+    width: 100%;
+    height: 60%;
+    word-wrap: break-word;
+    padding: 10px;
+    #userName{
+        font-size: 13px;
+        color: #afb0f0;
+        cursor: pointer;
+    }
+}
 #darkFun{
     position: fixed;
     top: 0;
