@@ -9,7 +9,7 @@ const addComment = document.getElementById("addComment")
 const newSend = document.getElementById("newSend")
 let selectComment = []
 let newIdComment = 0
-
+// let lastId = null
 //Função principal, onde os comentários são criados.
 const createComment = () => {
     if(addComment.value){
@@ -17,6 +17,7 @@ const createComment = () => {
         // Variáveis de contagem para as operações codicionais em algumas funções.
         let counter1 = 0
         let counter2 = 0
+        let c
 
         // Instanciadno a classe Comment.
         const newComment = new Comment("Victor", "@_vitorlimaa_")
@@ -24,7 +25,8 @@ const createComment = () => {
 
         newIdComment += 1
         newComment.setId(newIdComment)
-        console.log("O ID atual é: " + newComment.getId())
+        selectComment.push(newComment)
+        // console.log("O ID atual é: " + newComment.getId())
         
         selectComment.push(newComment.getId())
         console.log(selectComment)
@@ -86,7 +88,7 @@ const createComment = () => {
         commentText.id = "commentText"
 
         const div = document.createElement("div")
-        div.id = newComment.getId()
+        
 
         // Montando o comnetário na tela amarando um elemento ao outro.
         profileAndPostingTime.appendChild(profilePicture)
@@ -179,159 +181,87 @@ const createComment = () => {
         })
 
         reply.addEventListener("click", () =>{
-            addComment.focus()
+
             send.style.display = "none"
             newSend.style.display = "block"
-            
-            selectComment.forEach((id)=>{
-                if(id === newComment.getId()){
-                    newSend.addEventListener("click", () =>{
+            addComment.focus()
+        
+            newSend.addEventListener("click", ()=>{
+                send.style.display = "none"
+                newSend.style.display = "block"
 
-                        if(addComment.value){
-                            console.log("funcionou")
+                div.id = newComment.getId().toString()
+                console.log(newComment.getId())
+                console.log(div.id)
 
-                            const div = document.getElementById(id)
-
-                            const line = document.createElement("div")
-                            line.id = "line"
-        
-                            const replyComment = document.createElement("div")
-                            replyComment.id = "replyComment"
-        
-                            const replycommentHeader = document.createElement("div")
-                            replycommentHeader.id = "replycommentHeader"
-        
-                            const replyProfileAndResponsePostingTime = document.createElement("div")
-                            replyProfileAndResponsePostingTime.id = "replyProfileAndResponsePostingTime"
-        
-                            const replyProfilePicture = document.createElement("img")
-                            replyProfilePicture.id = "replyProfilePicture"
-                            replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
-        
-                            const replyName = document.createElement("div")
-                            replyName.id = "replyName"
-                            replyName.textContent = "Neto Maciel"
-        
-                            const replyPostingTime = document.createElement("div")
-                            replyPostingTime.id = "replyPostingTime"
-                            replyPostingTime.textContent = newComment.getPostingTime()
-        
-                            const replyEdit = document.createElement("img")
-                            replyEdit.id = "replyEdit"
-                            replyEdit.src = "./images/icon-edit.svg"
-        
-                            const replyCheck = document.createElement("img")
-                            replyCheck.id = "replyCheck"
-                            replyCheck.src = "./images/Icon-check.svg"
-        
-                            const replyDelet = document.createElement("img")
-                            replyDelet.id = "replyDelet"
-                            replyDelet.src = "./images/icon-delete.svg"
-                            replyDelet.style.display = "none"
-        
-                            const replyCommentText = document.createElement("div")
-                            replyCommentText.id = "replyCommentText"
-                            const replyText = addComment.value
-        
-                            const replyUserName = document.createElement("span")
-                            replyUserName.id = "replyUserName"
-                            replyUserName.textContent = "@Netomaciel48"
-                            let counter2 = 0
-        
-                            div.appendChild(line)
-                            line.appendChild(replyComment)
-                            replyComment.appendChild(replycommentHeader)
-                            replyComment.appendChild(replyCommentText)
-                            replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
-                            replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
-                            replyProfileAndResponsePostingTime.appendChild(replyName)
-                            replyProfileAndResponsePostingTime.appendChild(replyPostingTime)
-                            replyProfileAndResponsePostingTime.appendChild(replyEdit)
-                            replyProfileAndResponsePostingTime.appendChild(replyCheck)
-                            replyProfileAndResponsePostingTime.appendChild(replyDelet)
-                            replyCommentText.appendChild(replyUserName) 
-                            replyCommentText.appendChild(document.createTextNode(" "))
-                            replyCommentText.appendChild(document.createTextNode(replyText))
-        
-                            addComment.value = ""
-                            send.style.display = "block"
-                            newSend.style.display = "none"
+                // const now = Date.now()
+                // div.id = now
                 
-                            replyEdit.addEventListener("click", () =>{
-                                if(counter2 === 0){
-                                    replyDelet.style.display = "block"
-                                    counter2 = 1
-                                }else{
-                                    replyDelet.style.display = "none"
-                                    counter2 = 0
-                                }
-                    
-                                replyEdit.style.display = "none"
-                                replyCheck.style.display = "block"
-                    
-                                addComment.value = commentText.lastChild.textContent
-                                addComment.focus()
-                    
-                                replyCheck.addEventListener("click", () =>{
-                                    replyCommentText.lastChild.textContent = addComment.value
-                    
-                                    replyEdit.style.display = "block"
-                                    replyCheck.style.display = "none"
-                                    replyDelet.style.display = "none"
-                    
-                                    addComment.value = ""
-                                })
-                            })
-                
-                            replyDelet.addEventListener("click", () =>{
-                
-                                const popUp = document.createElement("div")
-                                popUp.id = "pop-up"
-                                const popUpTitle = document.createElement("h3")
-                                popUpTitle.id = "popUpTitle"
-                                popUpTitle.textContent = "Delete Comment"
-                                const textPopUp = document.createElement("div")
-                                textPopUp.id = "textPopUp"
-                                textPopUp.textContent = "Once the comment is deleted, the operation cannot be undone. Are you sure?"
-                                const buttonsPopUp = document.createElement("div")
-                                buttonsPopUp.id = "buttonsPopUp"
-                                const confirmDelet = document.createElement("button")
-                                confirmDelet.id = "confirmDelet"
-                                confirmDelet.textContent = "Confirm"
-                                const confirmCancel = document.createElement("button")
-                                confirmCancel.textContent = "Cancel"
-                                confirmCancel.id = "confirmCancel"
-                                const darkFun = document.createElement("div")
-                                darkFun.id = "darkFun"
-                    
-                                document.body.appendChild(darkFun)
-                                document.body.appendChild(popUp)
-                                popUp.appendChild(popUpTitle)
-                                popUp.appendChild(textPopUp)
-                                popUp.appendChild(buttonsPopUp)
-                                buttonsPopUp.appendChild(confirmDelet)
-                                buttonsPopUp.appendChild(confirmCancel)
-                    
-                                confirmDelet.addEventListener("click", () =>{
-                                    line.remove()
-                                    addComment.value = ""
-                    
-                                    popUp.remove()
-                                    darkFun.remove()
-                                })
-                    
-                                confirmCancel.addEventListener("click", () =>{
-                                    popUp.remove()
-                                })
+                const line = document.createElement("div")
+                line.id = "line"
         
-                                send.style.display = "block"
-                                newSend.style.display = "none"
-                            })
-                        }
-                    })
-                }
+                const replyComment = document.createElement("div")
+                replyComment.id = "replyComment"
+        
+                const replycommentHeader = document.createElement("div")
+                replycommentHeader.id = "replycommentHeader"
+        
+                const replyProfileAndResponsePostingTime = document.createElement("div")
+                replyProfileAndResponsePostingTime.id = "replyProfileAndResponsePostingTime"
+        
+                const replyProfilePicture = document.createElement("img")
+                replyProfilePicture.id = "replyProfilePicture"
+                replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
+        
+                const replyName = document.createElement("div")
+                replyName.id = "replyName"
+                replyName.textContent = "Neto Maciel"
+        
+                const replyPostingTime = document.createElement("div")
+                replyPostingTime.id = "replyPostingTime"
+                replyPostingTime.textContent = newComment.getPostingTime()
+        
+                const replyEdit = document.createElement("img")
+                replyEdit.id = "replyEdit"
+                replyEdit.src = "./images/icon-edit.svg"
+        
+                const replyCheck = document.createElement("img")
+                replyCheck.id = "replyCheck"
+                replyCheck.src = "./images/Icon-check.svg"
+        
+                const replyDelet = document.createElement("img")
+                replyDelet.id = "replyDelet"
+                replyDelet.src = "./images/icon-delete.svg"
+                replyDelet.style.display = "none"
+        
+                const replyCommentText = document.createElement("div")
+                replyCommentText.id = "replyCommentText"
+                const replyText = addComment.value
+        
+                const replyUserName = document.createElement("span")
+                replyUserName.id = "replyUserName"
+                replyUserName.textContent = "@Netomaciel48"
+        
+                const breakLine = document.createElement("br");
+        
+                div.appendChild(line)
+                line.appendChild(replyComment)
+                replyComment.appendChild(replycommentHeader)
+                replyComment.appendChild(replyCommentText)
+                replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
+                replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
+                replyProfileAndResponsePostingTime.appendChild(replyName)
+                replyProfileAndResponsePostingTime.appendChild(replyPostingTime)
+                replyProfileAndResponsePostingTime.appendChild(replyEdit)
+                replyProfileAndResponsePostingTime.appendChild(replyCheck)
+                replyProfileAndResponsePostingTime.appendChild(replyDelet)
+                line.appendChild(breakLine)
+        
+                addComment.value = ""
+                send.style.display = "block"
+                newSend.style.display = "none"
             })
-
+                    
         })
 
         textReply.addEventListener("click", () =>{
@@ -389,3 +319,187 @@ addComment.addEventListener("keyup", (event) =>{
         createComment(event)
     }
 });
+
+
+
+
+
+
+
+
+// // reply.addEventListener("click", () =>{
+
+// console.log("O lastID antes do if é: " + lastId)
+// addComment.focus()
+// send.style.display = "none"
+// newSend.style.display = "block"
+
+// selectComment.forEach((id)=>{
+//     if(id === newComment.getId()){
+
+//         if(id === lastId){
+//             c = 1
+//             console.log(`O ID e o last são iguais c: ${c}`)
+//         }else{
+//             c = 0
+//             console.log(`O ID e o last são diferentes c: ${c}`)
+//         }
+
+//         // if(c === 0){
+//         //     c = 1
+//         //     console.log(`O c agora vale ${c}`)
+//         // }
+
+//         console.log("O id é: " + id)
+//         console.log("O get ID é: " + newComment.getId())
+
+//         console.log("last id: " + lastId)
+//         newSend.addEventListener("click", () =>{
+
+//             // if(addComment.value){
+//                 console.log("funcionou")
+
+//                 const line = document.createElement("div")
+//                 line.id = "line"
+
+//                 const replyComment = document.createElement("div")
+//                 replyComment.id = "replyComment"
+
+//                 const replycommentHeader = document.createElement("div")
+//                 replycommentHeader.id = "replycommentHeader"
+
+//                 const replyProfileAndResponsePostingTime = document.createElement("div")
+//                 replyProfileAndResponsePostingTime.id = "replyProfileAndResponsePostingTime"
+
+//                 const replyProfilePicture = document.createElement("img")
+//                 replyProfilePicture.id = "replyProfilePicture"
+//                 replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
+
+//                 const replyName = document.createElement("div")
+//                 replyName.id = "replyName"
+//                 replyName.textContent = "Neto Maciel"
+
+//                 const replyPostingTime = document.createElement("div")
+//                 replyPostingTime.id = "replyPostingTime"
+//                 replyPostingTime.textContent = newComment.getPostingTime()
+
+//                 const replyEdit = document.createElement("img")
+//                 replyEdit.id = "replyEdit"
+//                 replyEdit.src = "./images/icon-edit.svg"
+
+//                 const replyCheck = document.createElement("img")
+//                 replyCheck.id = "replyCheck"
+//                 replyCheck.src = "./images/Icon-check.svg"
+
+//                 const replyDelet = document.createElement("img")
+//                 replyDelet.id = "replyDelet"
+//                 replyDelet.src = "./images/icon-delete.svg"
+//                 replyDelet.style.display = "none"
+
+//                 const replyCommentText = document.createElement("div")
+//                 replyCommentText.id = "replyCommentText"
+//                 const replyText = addComment.value
+
+//                 const replyUserName = document.createElement("span")
+//                 replyUserName.id = "replyUserName"
+//                 replyUserName.textContent = "@Netomaciel48"
+//                 console.log(c)
+
+//                 div.appendChild(line)
+//                 line.appendChild(replyComment)
+//                 replyComment.appendChild(replycommentHeader)
+//                 replyComment.appendChild(replyCommentText)
+//                 replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
+//                 replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
+//                 replyProfileAndResponsePostingTime.appendChild(replyName)
+//                 replyProfileAndResponsePostingTime.appendChild(replyPostingTime)
+//                 replyProfileAndResponsePostingTime.appendChild(replyEdit)
+//                 replyProfileAndResponsePostingTime.appendChild(replyCheck)
+//                 replyProfileAndResponsePostingTime.appendChild(replyDelet)
+//                 replyCommentText.appendChild(replyUserName) 
+//                 replyCommentText.appendChild(document.createTextNode(" "))
+//                 replyCommentText.appendChild(document.createTextNode(replyText))  
+//                 console.log(`Foi montado a primeira opção, pois ${c} 0`)
+
+//                 addComment.value = ""
+//                 send.style.display = "block"
+//                 newSend.style.display = "none"
+
+//                 lastId = id
+    
+//                 replyEdit.addEventListener("click", () =>{
+//                     if(counter2 === 0){
+//                         replyDelet.style.display = "block"
+//                         counter2 = 1
+//                     }else{
+//                         replyDelet.style.display = "none"
+//                         counter2 = 0
+//                     }
+        
+//                     replyEdit.style.display = "none"
+//                     replyCheck.style.display = "block"
+        
+//                     addComment.value = commentText.lastChild.textContent
+//                     addComment.focus()
+        
+//                     replyCheck.addEventListener("click", () =>{
+//                         replyCommentText.lastChild.textContent = addComment.value
+        
+//                         replyEdit.style.display = "block"
+//                         replyCheck.style.display = "none"
+//                         replyDelet.style.display = "none"
+        
+//                         addComment.value = ""
+//                     })
+//                 })
+    
+//                 replyDelet.addEventListener("click", () =>{
+    
+//                     const popUp = document.createElement("div")
+//                     popUp.id = "pop-up"
+//                     const popUpTitle = document.createElement("h3")
+//                     popUpTitle.id = "popUpTitle"
+//                     popUpTitle.textContent = "Delete Comment"
+//                     const textPopUp = document.createElement("div")
+//                     textPopUp.id = "textPopUp"
+//                     textPopUp.textContent = "Once the comment is deleted, the operation cannot be undone. Are you sure?"
+//                     const buttonsPopUp = document.createElement("div")
+//                     buttonsPopUp.id = "buttonsPopUp"
+//                     const confirmDelet = document.createElement("button")
+//                     confirmDelet.id = "confirmDelet"
+//                     confirmDelet.textContent = "Confirm"
+//                     const confirmCancel = document.createElement("button")
+//                     confirmCancel.textContent = "Cancel"
+//                     confirmCancel.id = "confirmCancel"
+//                     const darkFun = document.createElement("div")
+//                     darkFun.id = "darkFun"
+        
+//                     document.body.appendChild(darkFun)
+//                     document.body.appendChild(popUp)
+//                     popUp.appendChild(popUpTitle)
+//                     popUp.appendChild(textPopUp)
+//                     popUp.appendChild(buttonsPopUp)
+//                     buttonsPopUp.appendChild(confirmDelet)
+//                     buttonsPopUp.appendChild(confirmCancel)
+        
+//                     confirmDelet.addEventListener("click", () =>{
+//                         line.remove()
+//                         addComment.value = ""
+        
+//                         popUp.remove()
+//                         darkFun.remove()
+//                     })
+        
+//                     confirmCancel.addEventListener("click", () =>{
+//                         popUp.remove()
+//                     })
+
+//                     send.style.display = "block"
+//                     newSend.style.display = "none"
+//                 })
+//             // }
+//         })
+//     }
+// })
+
+// })
