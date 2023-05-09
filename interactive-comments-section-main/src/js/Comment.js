@@ -5,7 +5,7 @@ export class Comment{
         this.userNAme = userNAme
         this.postingTime = "now"
         this.amountOfComments = 0
-        this.amountOfLikes = 0
+        this.id = 0
         this.updateInterval = 0
     }
 
@@ -14,10 +14,10 @@ export class Comment{
         setInterval(()=>{
             const now = this.getUpdateInterval() + 1
             this.setUpdateInterval(now)
-            console.log(this.getUpdateInterval())
+            // console.log(this.getUpdateInterval())
 
             if(this.getUpdateInterval() <= 60){
-                console.log("now")
+                // console.log("now")
                 this.setPostingTime("now")
                 if(this.getUpdateInterval() === 60) c += 1
             }else if(this.getUpdateInterval() <= (60 * c) && c < 60){
@@ -76,12 +76,12 @@ export class Comment{
         return this.amountOfComments
     }
 
-    setAmountOfLikes(amountOfLikes){
-        this.amountOfLikes = amountOfLikes
+    setId(id){
+        this.id = id
     }
 
-    getAmountOfLikes(){
-        return this.amountOfLikes
+    getId(){
+        return this.id
     }
 
     setUpdateInterval(updateInterval){
