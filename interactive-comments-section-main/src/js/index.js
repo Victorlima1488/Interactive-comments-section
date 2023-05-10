@@ -6,10 +6,11 @@ const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
 const newSend = document.getElementById("newSend")
+let createdElements = []
 
 //Função principal, onde os comentários são criados.
-const createComment = () => {
-    console.log("test send")
+const createComment = (event) => {
+    
     if(addComment.value){
 
         // Variáveis de contagem para as operações codicionais em algumas funções.
@@ -183,7 +184,7 @@ const createComment = () => {
 
             let isEventRunning = false
 
-            newSend.addEventListener("click", ()=>{
+            const createReply = () =>{
 
                 if(!isEventRunning){
 
@@ -327,51 +328,11 @@ const createComment = () => {
                         popUp.remove()
                     })
                 })
-            })       
+            }
+
+            newSend.addEventListener("click", createReply)
+
         })
-
-        textReply.addEventListener("click", () =>{
-            const line = document.createElement("div")
-            line.id = "line"
-            const replyComment = document.createElement("div")
-            replyComment.id = "replyComment"
-            const replycommentHeader = document.createElement("div")
-            replycommentHeader.id = "replycommentHeader"
-            const replyProfileAndResponsePostingTime = document.createElement("div")
-            replyProfileAndResponsePostingTime.id = "replyProfileAndResponsePostingTime"
-            const replyProfilePicture = document.createElement("img")
-            replyProfilePicture.id = "replyProfilePicture"
-            replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
-            const replyName = document.createElement("div")
-            replyName.id = "replyName"
-            replyName.textContent = newComment.getUserName()
-            const replyPostingTime = document.createElement("div")
-            replyPostingTime.id = "replyPostingTime"
-            replyPostingTime.textContent = newComment.getPostingTime()
-            const replyEdit = document.createElement("img")
-            replyEdit.id = "replyEdit"
-            replyEdit.src = "./images/icon-edit.svg"
-            const replyCheck = document.createElement("img")
-            replyCheck.id = "replyCheck"
-            replyCheck.src = "./images/Icon-check.svg"
-            const replyDelet = document.createElement("img")
-            replyDelet.id = "replyDelet"
-            replyDelet.src = "./images/icon-delete.svg"
-            replyDelet.style.display = "none"
-
-            comments.appendChild(line)
-            line.appendChild(replyComment)
-            replyComment.appendChild(replycommentHeader)
-            replyComment.appendChild(commentText)
-            replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
-            replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
-            replyProfileAndResponsePostingTime.appendChild(replyName)
-            replyProfileAndResponsePostingTime.appendChild(replyPostingTime)
-            replyProfileAndResponsePostingTime.appendChild(replyEdit)
-            replyProfileAndResponsePostingTime.appendChild(replyCheck)
-            replyProfileAndResponsePostingTime.appendChild(replyDelet)
-        })
-
     }
 }
 
@@ -385,3 +346,4 @@ addComment.addEventListener("keyup", (event) =>{
         createComment(event)
     }
 });
+
