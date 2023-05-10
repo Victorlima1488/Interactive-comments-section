@@ -135,7 +135,7 @@ main ul li #commentHeader #divReply {
   font-weight: bold;
   cursor: pointer;
 }
-main ul li #commentHeader #divReply #reply {
+main ul li #commentHeader #divReply .reply {
   width: 21px;
   height: 20px;
 }
