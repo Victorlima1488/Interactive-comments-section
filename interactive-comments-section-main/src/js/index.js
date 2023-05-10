@@ -14,6 +14,7 @@ const createComment = () => {
 
         // Variáveis de contagem para as operações codicionais em algumas funções.
         let counter1 = 0
+        let counter2 = 0
 
         // Instanciadno a classe Comment.
         const newComment = new Comment("Victor", "@_vitorlimaa_")
@@ -77,6 +78,9 @@ const createComment = () => {
 
         const div = document.createElement("div")
         div.id = newComment.getId().toString()
+
+        const line = document.createElement("div")
+        line.id = "line"
 
         // Montando o comnetário na tela amarando um elemento ao outro.
         profileAndPostingTime.appendChild(profilePicture)
@@ -157,6 +161,9 @@ const createComment = () => {
 
             confirmDelet.addEventListener("click", () =>{
                 li.remove()
+                if(line){
+                    line.remove()
+                }
                 addComment.value = ""
 
                 popUp.remove()
@@ -185,9 +192,6 @@ const createComment = () => {
                         addComment.focus()
                         send.style.display = "none"
                         newSend.style.display = "block"
-                        
-                        const line = document.createElement("div")
-                        line.id = "line"
 
                         const replyComment = document.createElement("div")
                         replyComment.id = "replyComment"
@@ -237,6 +241,9 @@ const createComment = () => {
                         line.appendChild(replyComment)
                         replyComment.appendChild(replycommentHeader)
                         replyComment.appendChild(replyCommentText)
+                        replyCommentText.appendChild(replyUserName)
+                        replyCommentText.appendChild(document.createTextNode(" "))
+                        replyCommentText.appendChild(document.createTextNode(replyText))
                         replycommentHeader.appendChild(replyProfileAndResponsePostingTime)
                         replyProfileAndResponsePostingTime.appendChild(replyProfilePicture)
                         replyProfileAndResponsePostingTime.appendChild(replyName)
@@ -253,8 +260,74 @@ const createComment = () => {
                         isEventRunning = true
                     }
                 } 
-            })
-                    
+                replyEdit.addEventListener("click", () =>{
+                    if(counter2 === 0){
+                        replyDelet.style.display = "block"
+                        counter2 = 1
+                    }else{
+                        replyDelet.style.display = "none"
+                        counter2 = 0
+                    }
+        
+                    replyEdit.style.display = "none"
+                    replyCheck.style.display = "block"
+        
+                    addComment.value = replyCommentText.lastChild.textContent
+                    addComment.focus()
+        
+                    replyCheck.addEventListener("click", () =>{
+                        replyCommentText.lastChild.textContent = addComment.value
+        
+                        replyEdit.style.display = "block"
+                        replyCheck.style.display = "none"
+                        replyDelet.style.display = "none"
+        
+                        addComment.value = ""
+                    })
+                });
+
+                replyDelet.addEventListener("click", () =>{
+
+                    const popUp = document.createElement("div")
+                    popUp.id = "pop-up"
+                    const popUpTitle = document.createElement("h3")
+                    popUpTitle.id = "popUpTitle"
+                    popUpTitle.textContent = "Delete Comment"
+                    const textPopUp = document.createElement("div")
+                    textPopUp.id = "textPopUp"
+                    textPopUp.textContent = "Once the comment is deleted, the operation cannot be undone. Are you sure?"
+                    const buttonsPopUp = document.createElement("div")
+                    buttonsPopUp.id = "buttonsPopUp"
+                    const confirmDelet = document.createElement("button")
+                    confirmDelet.id = "confirmDelet"
+                    confirmDelet.textContent = "Confirm"
+                    const confirmCancel = document.createElement("button")
+                    confirmCancel.textContent = "Cancel"
+                    confirmCancel.id = "confirmCancel"
+                    const darkFun = document.createElement("div")
+                    darkFun.id = "darkFun"
+        
+                    document.body.appendChild(darkFun)
+                    document.body.appendChild(popUp)
+                    popUp.appendChild(popUpTitle)
+                    popUp.appendChild(textPopUp)
+                    popUp.appendChild(buttonsPopUp)
+                    buttonsPopUp.appendChild(confirmDelet)
+                    buttonsPopUp.appendChild(confirmCancel)
+        
+                    confirmDelet.addEventListener("click", () =>{
+                        line.remove()
+                        addComment.value = ""
+        
+                        popUp.remove()
+                        darkFun.remove()
+                    })
+        
+                    confirmCancel.addEventListener("click", () =>{
+                        popUp.remove()
+                    })
+                })
+            })       
         })
 
         textReply.addEventListener("click", () =>{
