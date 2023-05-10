@@ -57,14 +57,15 @@ main {
   margin: 0 auto;
 }
 main ul {
-  width: 100%;
+  margin: 0 auto;
+  width: 84%;
   max-height: 414px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   gap: 10px;
   overflow-y: auto;
-  padding: 15px 0 0 10px;
+  padding: 15px 45px 0 10px;
 }
 main ul::-webkit-scrollbar {
   display: none;
@@ -140,6 +141,10 @@ main ul li #commentHeader #divReply .reply {
   height: 20px;
 }
 main ul #line {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-left: 40px;
   min-width: 200px;
   max-width: 500px;
   min-height: 120px;
@@ -150,11 +155,10 @@ main ul #line {
 }
 main ul #line #replyComment {
   position: relative;
-  left: 49px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 400px;
+  min-width: 370px;
   max-width: 500px;
   min-height: 120px;
   max-height: 250px;

@@ -78,7 +78,9 @@ const createComment = (event) => {
         commentText.id = "commentText"
 
         const div = document.createElement("div")
-        div.id = newComment.getId().toString()
+        div.id = "newDiv"
+
+        console.log("o ID da div é: " + newComment.getId().toString())
 
         const line = document.createElement("div")
         line.id = "line"
@@ -95,7 +97,6 @@ const createComment = (event) => {
         divReply.appendChild(textReply) 
         commentHeader.appendChild(divReply)
         commentText.appendChild(userName)
-        commentText.appendChild(document.createTextNode(" "))
         commentText.appendChild(document.createTextNode(textComment))
         li.appendChild(commentHeader)
         li.appendChild(commentText)
@@ -176,7 +177,7 @@ const createComment = (event) => {
             })
         })
 
-        reply.addEventListener("click", () =>{
+        divReply.addEventListener("click", () =>{
 
             send.style.display = "none"
             newSend.style.display = "block"
@@ -252,7 +253,7 @@ const createComment = (event) => {
                         replyProfileAndResponsePostingTime.appendChild(replyEdit)
                         replyProfileAndResponsePostingTime.appendChild(replyCheck)
                         replyProfileAndResponsePostingTime.appendChild(replyDelet)
-                        line.appendChild(breakLine)
+                        // line.appendChild(breakLine)
 
                         addComment.value = ""
                         send.style.display = "block"
