@@ -8,6 +8,8 @@ const addComment = document.getElementById("addComment")
 const newSend = document.getElementById("newSend")
 const popUpSettings = document.getElementById("popUpSettings")
 const buttonSttings = document.getElementById("buttonSttings")
+const listPopUpSettingsAux = document.getElementById("listPopUpSettingsAux")
+const fontSizeSettings = document.getElementById("fontSizeSettings")
 let createdElements = []
 let testing = false
 
@@ -360,5 +362,21 @@ buttonSttings.addEventListener("click", () =>{
         popUpSettings.style.transform = "translateY(-130px)"
         testing = false
     }
+})
+
+fontSizeSettings.addEventListener( "mouseover", ()=>{
+    listPopUpSettingsAux.style.display = "block"
+})
+
+listPopUpSettingsAux.addEventListener( "mouseover", ()=>{
+    listPopUpSettingsAux.style.display = "block"
+    fontSizeSettings.style.backgroundColor = "#d9d9eb"
+    fontSizeSettings.style.color = "#FFF"
+})
+
+fontSizeSettings.addEventListener( "mouseout", ()=>{
+    listPopUpSettingsAux.style.display = "none"
+    fontSizeSettings.style.backgroundColor = "#FFF"
+    fontSizeSettings.style.color = "#000"
 })
 

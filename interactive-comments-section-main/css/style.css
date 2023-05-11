@@ -81,6 +81,24 @@ header nav ul li #buttonProfile {
   color: #FFF;
 }
 
+#listPopUpSettingsAux {
+  display: none;
+  position: absolute;
+  padding: 13.5px 0;
+  width: 140px;
+  text-align: center;
+  right: 28px;
+  top: 114px;
+  background-color: #FFF;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#listPopUpSettingsAux:hover {
+  background-color: #d9d9eb;
+  color: #FFF;
+}
+
 main {
   position: relative;
   background-color: #d9d9eb;
