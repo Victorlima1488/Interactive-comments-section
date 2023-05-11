@@ -13,10 +13,14 @@ const listPopUpSettingsAuxLanguage = document.getElementById("listPopUpSettingsA
 const fontSizeSettings = document.getElementById("fontSizeSettings")
 const LanguageSettings = document.getElementById("LanguageSettings")
 const themeBody = document.getElementById("body")
+themeBody.classList.remove("purple")
+themeBody.classList.add(localStorage.getItem("theme"))
 const theme = document.getElementById("theme")
+theme.textContent = ""
+theme.textContent = localStorage.getItem("textTheme")
 const main = document.getElementById("main")
 let testing = false
-let c = 0
+let currentTheme
 
 //Função principal, onde os comentários são criados.
 const createComment = (event) => {
@@ -380,16 +384,21 @@ function upPopUp(){
     }
 }
 
-
 theme.addEventListener("click", () =>{
     if(themeBody.classList.contains("purple")){
         themeBody.classList.remove("purple")
         themeBody.classList.add("dark")
+        currentTheme = "dark"
+        localStorage.setItem("theme", currentTheme)
         theme.textContent = "Tema Purple"
+        localStorage.setItem("textTheme", theme.textContent)
     }else{
         themeBody.classList.remove("dark")
         themeBody.classList.add("purple")
+        currentTheme = "purple"
+        localStorage.setItem("theme", currentTheme)
         theme.textContent = "Tema dark"
+        localStorage.setItem("textTheme", theme.textContent)
     }
 })
 
