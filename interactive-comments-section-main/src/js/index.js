@@ -14,7 +14,9 @@ const fontSizeSettings = document.getElementById("fontSizeSettings")
 const LanguageSettings = document.getElementById("LanguageSettings")
 const themeBody = document.getElementById("body")
 const theme = document.getElementById("theme")
+const main = document.getElementById("main")
 let testing = false
+let c = 0
 
 //Função principal, onde os comentários são criados.
 const createComment = (event) => {
@@ -359,15 +361,25 @@ addComment.addEventListener("keyup", (event) =>{
 });
 
 buttonSttings.addEventListener("click", () =>{
-    
     if(!testing){
         popUpSettings.style.transform = "translateY(0px)"
         testing = true
     }else{
-        popUpSettings.style.transform = "translateY(-131px)"
+        popUpSettings.style.transform = "translateY(-130px)"
         testing = false
     }
 })
+
+main.addEventListener("click", upPopUp)
+
+
+function upPopUp(){
+    if(testing){
+        testing = false
+        popUpSettings.style.transform = "translateY(-130px)"
+    }
+}
+
 
 theme.addEventListener("click", () =>{
     if(themeBody.classList.contains("purple")){
@@ -381,35 +393,61 @@ theme.addEventListener("click", () =>{
     }
 })
 
-listPopUpSettingsAuxFont.addEventListener( "mouseover", ()=>{
+fontSizeSettings.addEventListener("mouseover", ()=>{
     listPopUpSettingsAuxFont.style.display = "block"
-    fontSizeSettings.style.backgroundColor = "#2f3146"
+    if(themeBody.classList.contains("purple")){
+        listPopUpSettingsAuxFont.style.backgroundColor = "#d9d9eb"
+        listPopUpSettingsAuxFont.style.color = "#000"
+    }else{
+        listPopUpSettingsAuxFont.style.backgroundColor = "#2f3146"
+        listPopUpSettingsAuxFont.style.color = "#FFF"
+    }
 })
 
-fontSizeSettings.addEventListener( "mouseout", ()=>{
+fontSizeSettings.addEventListener("mouseout", ()=>{
     listPopUpSettingsAuxFont.style.display = "none"
-    fontSizeSettings.style.backgroundColor = "#282a43"
 })
 
-fontSizeSettings.addEventListener( "mouseover", ()=>{
+listPopUpSettingsAuxFont.addEventListener("mouseover", ()=>{
     listPopUpSettingsAuxFont.style.display = "block"
-    listPopUpSettingsAuxFont.style.backgroundColor = "#2f3146"
-    fontSizeSettings.style.backgroundColor = "#2f3146"
+    if(themeBody.classList.contains("purple")){
+        fontSizeSettings.style.backgroundColor = "#d9d9eb"
+    }else{
+        fontSizeSettings.style.backgroundColor = "#2f3146"
+    }
 })
 
-listPopUpSettingsAuxLanguage.addEventListener("mouseover", () =>{
+listPopUpSettingsAuxFont.addEventListener("mouseout", ()=>{
+    listPopUpSettingsAuxFont.style.display = "none"
+    fontSizeSettings.style.backgroundColor = ""
+})
+
+LanguageSettings.addEventListener("mouseover", ()=>{
     listPopUpSettingsAuxLanguage.style.display = "block"
-    LanguageSettings.style.backgroundColor = "#2f3146"
+    if(themeBody.classList.contains("purple")){
+        listPopUpSettingsAuxLanguage.style.backgroundColor = "#d9d9eb"
+        listPopUpSettingsAuxLanguage.style.color = "#000"
+    }else{
+        listPopUpSettingsAuxLanguage.style.backgroundColor = "#2f3146"
+        listPopUpSettingsAuxLanguage.style.color = "#FFF"
+    }
 })
 
-LanguageSettings.addEventListener( "mouseout", ()=>{
+LanguageSettings.addEventListener("mouseout", ()=>{
     listPopUpSettingsAuxLanguage.style.display = "none"
-    LanguageSettings.style.backgroundColor = "#282a43"
 })
 
-LanguageSettings.addEventListener( "mouseover", ()=>{
+listPopUpSettingsAuxLanguage.addEventListener("mouseover", ()=>{
     listPopUpSettingsAuxLanguage.style.display = "block"
-    listPopUpSettingsAuxLanguage.style.backgroundColor = "#2f3146"
-    LanguageSettings.style.backgroundColor = "#2f3146"
+    if(themeBody.classList.contains("purple")){
+        LanguageSettings.style.backgroundColor = "#d9d9eb"
+    }else{
+        LanguageSettings.style.backgroundColor = "#2f3146"
+    }
+})
+
+listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
+    listPopUpSettingsAuxLanguage.style.display = "none"
+    LanguageSettings.style.backgroundColor = ""
 })
 
