@@ -8,9 +8,12 @@ const addComment = document.getElementById("addComment")
 const newSend = document.getElementById("newSend")
 const popUpSettings = document.getElementById("popUpSettings")
 const buttonSttings = document.getElementById("buttonSttings")
-const listPopUpSettingsAux = document.getElementById("listPopUpSettingsAux")
+const listPopUpSettingsAuxFont = document.getElementById("listPopUpSettingsAuxFont")
+const listPopUpSettingsAuxLanguage = document.getElementById("listPopUpSettingsAuxLanguage")
 const fontSizeSettings = document.getElementById("fontSizeSettings")
-let createdElements = []
+const LanguageSettings = document.getElementById("LanguageSettings")
+const themeBody = document.getElementById("body")
+const theme = document.getElementById("theme")
 let testing = false
 
 //Função principal, onde os comentários são criados.
@@ -73,10 +76,11 @@ const createComment = (event) => {
         divReply.id = "divReply"
 
         const textReply = document.createElement("div")
+        textReply.id = "textReply"
         textReply.textContent = "Reply"
 
         const reply = document.createElement("img")
-        reply.className = "reply"
+        reply.id = "reply"
         reply.src = "./images/icon-reply.svg"
 
         const commentText = document.createElement("div")
@@ -102,6 +106,7 @@ const createComment = (event) => {
         divReply.appendChild(textReply) 
         commentHeader.appendChild(divReply)
         commentText.appendChild(userName)
+        commentText.appendChild(document.createTextNode(" "))
         commentText.appendChild(document.createTextNode(textComment))
         li.appendChild(commentHeader)
         li.appendChild(commentText)
@@ -359,24 +364,52 @@ buttonSttings.addEventListener("click", () =>{
         popUpSettings.style.transform = "translateY(0px)"
         testing = true
     }else{
-        popUpSettings.style.transform = "translateY(-130px)"
+        popUpSettings.style.transform = "translateY(-131px)"
         testing = false
     }
 })
 
-fontSizeSettings.addEventListener( "mouseover", ()=>{
-    listPopUpSettingsAux.style.display = "block"
+theme.addEventListener("click", () =>{
+    if(themeBody.classList.contains("purple")){
+        themeBody.classList.remove("purple")
+        themeBody.classList.add("dark")
+        theme.textContent = "Tema Purple"
+    }else{
+        themeBody.classList.remove("dark")
+        themeBody.classList.add("purple")
+        theme.textContent = "Tema dark"
+    }
 })
 
-listPopUpSettingsAux.addEventListener( "mouseover", ()=>{
-    listPopUpSettingsAux.style.display = "block"
-    fontSizeSettings.style.backgroundColor = "#d9d9eb"
-    fontSizeSettings.style.color = "#FFF"
+listPopUpSettingsAuxFont.addEventListener( "mouseover", ()=>{
+    listPopUpSettingsAuxFont.style.display = "block"
+    fontSizeSettings.style.backgroundColor = "#2f3146"
 })
 
 fontSizeSettings.addEventListener( "mouseout", ()=>{
-    listPopUpSettingsAux.style.display = "none"
-    fontSizeSettings.style.backgroundColor = "#FFF"
-    fontSizeSettings.style.color = "#000"
+    listPopUpSettingsAuxFont.style.display = "none"
+    fontSizeSettings.style.backgroundColor = "#282a43"
+})
+
+fontSizeSettings.addEventListener( "mouseover", ()=>{
+    listPopUpSettingsAuxFont.style.display = "block"
+    listPopUpSettingsAuxFont.style.backgroundColor = "#2f3146"
+    fontSizeSettings.style.backgroundColor = "#2f3146"
+})
+
+listPopUpSettingsAuxLanguage.addEventListener("mouseover", () =>{
+    listPopUpSettingsAuxLanguage.style.display = "block"
+    LanguageSettings.style.backgroundColor = "#2f3146"
+})
+
+LanguageSettings.addEventListener( "mouseout", ()=>{
+    listPopUpSettingsAuxLanguage.style.display = "none"
+    LanguageSettings.style.backgroundColor = "#282a43"
+})
+
+LanguageSettings.addEventListener( "mouseover", ()=>{
+    listPopUpSettingsAuxLanguage.style.display = "block"
+    listPopUpSettingsAuxLanguage.style.backgroundColor = "#2f3146"
+    LanguageSettings.style.backgroundColor = "#2f3146"
 })
 

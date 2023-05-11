@@ -1,19 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
+
+body.dark{
+    --bg-body-color: #d7c0f7;
+    --bg-header: #282a43;
+    --font-color: #FFF;
+    --bg-popUp-setting: #282a43;
+    --bg-popUp: #181a1b;
+    --bg-main-li: #282a43;
+    --bg-replyComment: #282a43;
+    --bg-creatComment: #282a43;
+    --font-color-primary: #181a1b;
+    --h1-header-color: #FFF;
+    --h1-bg-color: #d7c0f7;
+    --bg-hover-popUp-setting: #2f3146;
+    --bg-main: #373a59;
+    --button-color: #5a5757;
+    --color-postingTime: #A6A8AC;
+    --color-divReply: #c5c5cc;
+    --border-left-line: #d7c0f7;
+    --color-userName: #c5c5cc;
+    --text-popUp-color: #808080;
+    --button-confirmDelet: #ED6468;
+    --button-confirmCancel: #4a4a4d;
+    --border-addComment: #d7c0f7;
+}
+
+body.purple{
+    --bg-body-color: #f0f1f5;
+    --bg-header: #FFF;
+    --font-color: #000;
+    --bg-popUp-setting: #FFF; 
+    --bg-popUp: #FFF;
+    --bg-main-li: #FFF;
+    --bg-replyComment: #FFF;
+    --bg-creatComment: #FFF;
+    --font-color-button: #FFF;
+    --h1-header-color: #979191;
+    --h1-bg-color: #d9d9eb;
+    --bg-hover-popUp-setting: #d9d9eb;
+    --bg-main: #d9d9eb;
+    --button-color: #6d6ff0;
+    --color-postingTime: #A6A8AC;
+    --color-divReply: #585ad4;
+    --border-left-line: #bdbdc2;
+    --color-userName: #afb0f0;
+    --text-popUp-color: #808080;
+    --button-confirmDelet: #ED6468;
+    --button-confirmCancel: #4a4a4d;
+    --border-addComment: #d5d6d8;
+}
+
 *{
     margin: 0;
     padding: 0;
     list-style: none;
     font-family: 'Rubik', sans-serif;
+    color: var(--font-color);
 }
+
 body{
-    background-color: #f0f1f5;
+    background-color: var(--bg-body-color);
     height: 100vh;
 }
 
 header{
     position: relative;
-    background-color: #FFF;
+    background-color: var(--bg-header);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,12 +75,12 @@ header{
     padding: 0 20px;
     z-index: 3;
     h1{
-        color: #7c7c80;
+        color: var(--h1-header-color);
     }
     .lastNameTitle{
         padding: 2px 4px;
-        background-color: #d9d9eb;
-        color: #7c7c80;
+        color: var(--h1-header-color);
+        background-color: var(--h1-bg-color);
     }
     nav{
         ul{
@@ -45,10 +98,10 @@ header{
                     font-size: 14px;
                 }
                 #buttonProfile{
-                    background-color: #6d6ff0;
+                    background-color: var(--button-color);
                     border: none;
                     border-radius: 20px;
-                    color: #FFF;
+                    color: var(--font-color-button);
                     padding: 10px 25px;
                 }
             }
@@ -59,10 +112,10 @@ header{
 #popUpSettings{
     position: absolute;
     right: 168px;
-    background-color: #FFF;
+    background-color: var(--bg-popUp-setting);
     width: 157px;
-    height: 130px;
-    transform: translateY(-130px);
+    height: 129px;
+    transform: translateY(-131px);
     transition: transform 0.5s ease-in-out;
     z-index: 2;
     #listPopUpSettings{
@@ -78,36 +131,36 @@ header{
             padding: 13.5px 0;
             transition: .3s;
             &:hover{
-                background-color: #d9d9eb;
-                color: #FFF;
+                background-color: var(--bg-hover-popUp-setting);
+                color: var(--font-color);
             }
         }
     }
 }
 
 #listPopUpSettingsAux{
-    display: none;
-    position: absolute;
-    padding: 13.5px 0;
-    width: 140px;
-    text-align: center;
-    right: 28px;
-    top: 114px;
-    background-color: #FFF;
-    font-size: 14px;
-    cursor: pointer;
-    transition: .3s;
-        &:hover{
-            background-color: #d9d9eb;
-            color: #FFF;
-        }
+    #listPopUpSettingsAuxFont, #listPopUpSettingsAuxLanguage{
+        display: none;
+        position: absolute;
+        right: 42px;
+        top: 113.5px;
+        width: 126px;
+        height: 17.5px;
+        padding: 13.5px 0;
+        text-align: center;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    #listPopUpSettingsAuxLanguage{
+        top: 157.5px;
+    }
 }
 
 main{
     position: relative;
-    background-color: #d9d9eb;
+    background-color: var(--bg-main);
     width: 65vw;
-    height: 589px;
+    height: 593px;
     margin: 0 auto;
     ul{
         margin: 0 auto;
@@ -130,7 +183,7 @@ main{
             max-width: 650px;
             min-height: 120px;
             max-height: 250px;
-            background-color: #FFFFFF;
+            background-color: var(--bg-main-li);
             padding: 7px 15px 7px 7px;
             border-radius: 10px;
             #commentHeader{
@@ -152,7 +205,7 @@ main{
                         justify-content: center;
                         align-items: center;
                         height: 50px;
-                        color: rgb(166, 168, 172);
+                        color: var(--color-postingTime);
                         font-style: italic;
                         font-size: 13px;
                     }
@@ -182,12 +235,16 @@ main{
                     display: flex;
                     align-items: center;
                     gap: 5px;
-                    color: #585ad4;
+                    color: var(--color-divReply);
                     font-weight: bold;
                     cursor: pointer;
-                    .reply{
+                    #reply{
                         width: 21px;
                         height: 20px;
+                        color: gray;
+                    }
+                    #textReply{
+                        color: var(--color-divReply);
                     }
                 }
             }
@@ -203,7 +260,7 @@ main{
             min-height: 120px;
             max-height: 1000px;
             background-color: transparent;
-            border-left: #bdbdc2 1px solid;
+            border-left: var(--border-left-line) 1px solid;
             border-radius: 0;
             #replyComment{
                 position: relative;
@@ -214,7 +271,7 @@ main{
                 max-width: 500px;
                 min-height: 120px;
                 max-height: 250px;
-                background-color: #FFFFFF;
+                background-color: var(--bg-replyComment);
                 padding: 7px 15px 7px 7px;
                 border-radius: 10px;
                 #replycommentHeader{
@@ -237,7 +294,7 @@ main{
                         justify-content: center;
                         align-items: center;
                         height: 50px;
-                        color: rgb(166, 168, 172);
+                        color: var(--color-postingTime);
                         font-style: italic;
                         font-size: 13px;
                     }
@@ -270,7 +327,7 @@ main{
                     padding: 10px;
                     #replyUserName{
                         font-size: 13px;
-                        color: #afb0f0;
+                        color: var(--color-userName);
                         cursor: pointer;
                     }
                 }
@@ -286,7 +343,7 @@ main{
     padding: 10px;
     #userName{
         font-size: 13px;
-        color: #afb0f0;
+        color: var(--color-userName);
         cursor: pointer;
     }
 }
@@ -314,12 +371,12 @@ main{
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     z-index: 999;
-    background-color: #FFF;
+    background-color: var(--bg-popUp);
     text-align: left;
     padding: 15px;
     font-size: 14px;
     #textpopUp{
-        color: gray;
+        color: var(--text-popUp-color);
     }
     #buttonsPopUp{
         display: flex;
@@ -332,12 +389,12 @@ main{
             border-radius: 6px;
         }
         #confirmDelet{
-            background-color: #ED6468;
-            color: #FFF;
+            background-color: var(--button-confirmDelet);
+            color: var(--font-color);
         }
         #confirmCancel{
-            background-color: #4a4a4d;
-            color: #FFF;
+            background-color: var(--button-confirmCancel);
+            color: var(--font-color);
         }
     }
 }
@@ -365,13 +422,13 @@ main{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #FFF;
+    background-color: var(--bg-creatComment);
     #addComment{
         width: 480px;
         height: 100px;
-        border: solid rgb(213, 214, 216) 1px;
+        border: solid var(--border-addComment) 1px;
         text-align: left;
-        background-color: #FFF;
+        background-color: var(--bg-creatComment);
         padding: 4px 6px;
         resize: none;
         font-size: 17px;
@@ -389,9 +446,9 @@ main{
         width: 90px;
         height: 50px;
         cursor: pointer;
-        color: #FFF;
+        color: var(--font-color-button);
         font-size: 17px;
-        background-color: #6d6ff0;
+        background-color: var(--button-color);
         border: none;
         border-radius: 30px;
     }
@@ -401,9 +458,9 @@ main{
         width: 90px;
         height: 50px;
         cursor: pointer;
-        color: #FFF;
+        color: var(--font-color-button);
         font-size: 17px;
-        background-color: #6d6ff0;
+        background-color: var(--button-color);
         border: none;
         border-radius: 30px;
     }
