@@ -12,6 +12,7 @@ body {
 }
 
 header {
+  position: relative;
   background-color: #FFF;
   display: flex;
   justify-content: space-between;
@@ -19,6 +20,7 @@ header {
   height: 70px;
   gap: 10px;
   padding: 0 20px;
+  z-index: 3;
 }
 header h1 {
   color: #7c7c80;
@@ -36,7 +38,7 @@ header nav ul {
 header nav ul li button {
   cursor: pointer;
 }
-header nav ul li #buttonComments {
+header nav ul li #buttonComments, header nav ul li #buttonSttings {
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -50,7 +52,37 @@ header nav ul li #buttonProfile {
   padding: 10px 25px;
 }
 
+#popUpSettings {
+  position: absolute;
+  right: 168px;
+  background-color: #FFF;
+  width: 157px;
+  height: 130px;
+  transform: translateY(-130px);
+  transition: transform 0.5s ease-in-out;
+  z-index: 2;
+}
+#popUpSettings #listPopUpSettings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#popUpSettings #listPopUpSettings li {
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  padding: 13.5px 0;
+  transition: 0.3s;
+}
+#popUpSettings #listPopUpSettings li:hover {
+  background-color: #d9d9eb;
+  color: #FFF;
+}
+
 main {
+  position: relative;
   background-color: #d9d9eb;
   width: 65vw;
   height: 589px;

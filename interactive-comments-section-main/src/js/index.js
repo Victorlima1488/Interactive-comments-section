@@ -6,7 +6,10 @@ const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
 const newSend = document.getElementById("newSend")
+const popUpSettings = document.getElementById("popUpSettings")
+const buttonSttings = document.getElementById("buttonSttings")
 let createdElements = []
+let testing = false
 
 //Função principal, onde os comentários são criados.
 const createComment = (event) => {
@@ -347,4 +350,15 @@ addComment.addEventListener("keyup", (event) =>{
         createComment(event)
     }
 });
+
+buttonSttings.addEventListener("click", () =>{
+    
+    if(!testing){
+        popUpSettings.style.transform = "translateY(0px)"
+        testing = true
+    }else{
+        popUpSettings.style.transform = "translateY(-130px)"
+        testing = false
+    }
+})
 
