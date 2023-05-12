@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
 
 
-body.dark{
+body.dracula{
     --bg-body-color: #d7c0f7;
     --bg-header: #282a43;
     --font-color: #FFF;
@@ -113,9 +113,9 @@ header{
     position: absolute;
     right: 168px;
     background-color: var(--bg-popUp-setting);
-    width: 157px;
-    height: 129px;
-    transform: translateY(-131px);
+    width: 159px;
+    height: 140px;
+    transform: translateY(-198px);
     transition: transform 0.5s ease-in-out;
     z-index: 2;
     #listPopUpSettings{
@@ -123,6 +123,12 @@ header{
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        .theme{
+            display:  flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
         li{
             cursor: pointer;
             font-size: 14px;
@@ -130,6 +136,10 @@ header{
             text-align: center;
             padding: 13.5px 0;
             transition: .3s;
+            #themeIcon{
+                width: 25px;
+                height: 25px;
+            }
             &:hover{
                 background-color: var(--bg-hover-popUp-setting);
                 color: var(--font-color);
@@ -143,7 +153,7 @@ header{
         display: none;
         position: absolute;
         right: 42px;
-        top: 113.5px;
+        top: 121.5px;
         width: 126px;
         height: 17.5px;
         padding: 13.5px 0;
@@ -152,7 +162,7 @@ header{
         font-size: 14px;
     }
     #listPopUpSettingsAuxLanguage{
-        top: 157.5px;
+        top: 165.5px;
     }
 }
 

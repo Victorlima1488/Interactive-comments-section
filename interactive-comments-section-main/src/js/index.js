@@ -18,9 +18,16 @@ themeBody.classList.add(localStorage.getItem("theme"))
 const theme = document.getElementById("theme")
 theme.textContent = ""
 theme.textContent = localStorage.getItem("textTheme")
+const themeIcon = document.createElement("img")
+themeIcon.id = "themeIcon"
+themeIcon.src = ""
+themeIcon.src = localStorage.getItem("iconTheme")
+theme.appendChild(themeIcon)
 const main = document.getElementById("main")
+const textSize = document.querySelectorAll(".textSize")
 let testing = false
 let currentTheme
+let currentIcon
 
 //Função principal, onde os comentários são criados.
 const createComment = (event) => {
@@ -51,10 +58,12 @@ const createComment = (event) => {
         profilePicture.src = "./images/avatars/image-maxblagun.png"
 
         const name = document.createElement("div")
+        name.classList.add("textSize")
         name.id = "name"
         name.textContent = newComment.getAuthor()
 
         const postingTime = document.createElement("div")
+        postingTime.classList.add("textSize")
         postingTime.id = "postingTime"
         postingTime.textContent = newComment.getPostingTime()
         setInterval(() => {
@@ -75,6 +84,7 @@ const createComment = (event) => {
         delet.style.display = "none"
 
         const userName = document.createElement("span")
+        userName.classList.add("textSize")
         userName.id = "userName"
         userName.textContent = newComment.getUserName()
 
@@ -90,6 +100,7 @@ const createComment = (event) => {
         reply.src = "./images/icon-reply.svg"
 
         const commentText = document.createElement("div")
+        commentText.classList.add("textSize")
         commentText.id = "commentText"
 
         const div = document.createElement("div")
@@ -369,7 +380,7 @@ buttonSttings.addEventListener("click", () =>{
         popUpSettings.style.transform = "translateY(0px)"
         testing = true
     }else{
-        popUpSettings.style.transform = "translateY(-130px)"
+        popUpSettings.style.transform = "translateY(-198px)"
         testing = false
     }
 })
@@ -380,26 +391,34 @@ main.addEventListener("click", upPopUp)
 function upPopUp(){
     if(testing){
         testing = false
-        popUpSettings.style.transform = "translateY(-130px)"
+        popUpSettings.style.transform = "translateY(-198px)"
     }
 }
 
 theme.addEventListener("click", () =>{
     if(themeBody.classList.contains("purple")){
         themeBody.classList.remove("purple")
-        themeBody.classList.add("dark")
-        currentTheme = "dark"
+        themeBody.classList.add("dracula")
+        currentTheme = "dracula"
+        currentIcon = "./images/icon-sun-theme.svg"
+        localStorage.setItem("iconTheme", currentIcon)
         localStorage.setItem("theme", currentTheme)
         theme.textContent = "Tema Purple"
         localStorage.setItem("textTheme", theme.textContent)
     }else{
-        themeBody.classList.remove("dark")
+        themeBody.classList.remove("dracula")
         themeBody.classList.add("purple")
         currentTheme = "purple"
+        currentIcon = "./images/icon-dracula-theme.svg"
+        localStorage.setItem("iconTheme", currentIcon)
         localStorage.setItem("theme", currentTheme)
-        theme.textContent = "Tema dark"
+        theme.textContent = "Tema dracula"
         localStorage.setItem("textTheme", theme.textContent)
     }
+    themeIcon.id = "themeIcon"
+    themeIcon.src = ""
+    themeIcon.src = localStorage.getItem("iconTheme")
+    theme.appendChild(themeIcon)
 })
 
 fontSizeSettings.addEventListener("mouseover", ()=>{
@@ -460,3 +479,10 @@ listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
     LanguageSettings.style.backgroundColor = ""
 })
 
+fontSizeSettings.addEventListener("click", ()=>{
+    
+    textSize.forEach((Element)=>{
+        console.log(Element)
+        Element.style.fontSize = "16px"
+    })
+})

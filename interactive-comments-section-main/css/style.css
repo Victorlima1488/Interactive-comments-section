@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
-body.dark {
+body.dracula {
   --bg-body-color: #d7c0f7;
   --bg-header: #282a43;
   --font-color: #FFF;
@@ -107,9 +107,9 @@ header nav ul li #buttonProfile {
   position: absolute;
   right: 168px;
   background-color: var(--bg-popUp-setting);
-  width: 157px;
-  height: 129px;
-  transform: translateY(-131px);
+  width: 159px;
+  height: 140px;
+  transform: translateY(-198px);
   transition: transform 0.5s ease-in-out;
   z-index: 2;
 }
@@ -119,6 +119,12 @@ header nav ul li #buttonProfile {
   align-items: center;
   justify-content: center;
 }
+#popUpSettings #listPopUpSettings .theme {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
 #popUpSettings #listPopUpSettings li {
   cursor: pointer;
   font-size: 14px;
@@ -126,6 +132,10 @@ header nav ul li #buttonProfile {
   text-align: center;
   padding: 13.5px 0;
   transition: 0.3s;
+}
+#popUpSettings #listPopUpSettings li #themeIcon {
+  width: 25px;
+  height: 25px;
 }
 #popUpSettings #listPopUpSettings li:hover {
   background-color: var(--bg-hover-popUp-setting);
@@ -136,7 +146,7 @@ header nav ul li #buttonProfile {
   display: none;
   position: absolute;
   right: 42px;
-  top: 113.5px;
+  top: 121.5px;
   width: 126px;
   height: 17.5px;
   padding: 13.5px 0;
@@ -145,7 +155,7 @@ header nav ul li #buttonProfile {
   font-size: 14px;
 }
 #listPopUpSettingsAux #listPopUpSettingsAuxLanguage {
-  top: 157.5px;
+  top: 165.5px;
 }
 
 main {
