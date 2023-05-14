@@ -24,9 +24,11 @@ themeIcon.src = ""
 themeIcon.src = localStorage.getItem("iconTheme")
 theme.appendChild(themeIcon)
 const main = document.getElementById("main")
+const selectOptionLanguage = document.getElementById("selectOptionLanguage")
 let testing = false
 let currentTheme
 let currentIcon
+let currentSize = "15px"
 
 function getTextSizeElements() {
     return document.querySelectorAll('.textSize');
@@ -64,6 +66,7 @@ const createComment = (event) => {
         name.classList.add("textSize")
         name.id = "name"
         name.textContent = newComment.getAuthor()
+        name.style.fontSize = currentSize
 
         const postingTime = document.createElement("div")
         postingTime.classList.add("textSize")
@@ -90,6 +93,7 @@ const createComment = (event) => {
         userName.classList.add("textSize")
         userName.id = "userName"
         userName.textContent = newComment.getUserName()
+        userName.style.fontSize = currentSize
 
         const divReply = document.createElement("div")
         divReply.id = "divReply"
@@ -105,6 +109,7 @@ const createComment = (event) => {
         const commentText = document.createElement("div")
         commentText.classList.add("textSize")
         commentText.id = "commentText"
+        commentText.style.fontSize = currentSize
 
         const div = document.createElement("div")
         div.id = "newDiv"
@@ -239,8 +244,10 @@ const createComment = (event) => {
                         replyProfilePicture.src = "./images/avatars/image-juliusomo.png"
 
                         const replyName = document.createElement("div")
+                        replyName.classList.add("textSize")
                         replyName.id = "replyName"
                         replyName.textContent = "Neto Maciel"
+                        replyName.style.fontSize = currentSize
 
                         const replyPostingTime = document.createElement("div")
                         replyPostingTime.id = "replyPostingTime"
@@ -260,14 +267,18 @@ const createComment = (event) => {
                         replyDelet.style.display = "none"
 
                         const replyCommentText = document.createElement("div")
+                        replyCommentText.classList.add("textSize")
+                        replyName.id = "replyName"
                         replyCommentText.id = "replyCommentText"
+                        replyCommentText.style.fontSize = currentSize
                         const replyText = addComment.value
 
                         const replyUserName = document.createElement("span")
+                        replyUserName.classList.add("textSize")
+                        replyName.id = "replyName"
                         replyUserName.id = "replyUserName"
+                        replyUserName.style.fontSize = currentSize
                         replyUserName.textContent = "@Netomaciel48"
-
-                        const breakLine = document.createElement("br");
 
                         div.appendChild(line)
                         line.appendChild(replyComment)
@@ -482,10 +493,29 @@ listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
     LanguageSettings.style.backgroundColor = ""
 })
 
-fontSizeSettings.addEventListener("click", ()=>{
+function textSizeFunction(size){
     const textSize = getTextSizeElements()
     textSize.forEach((Element)=>{
-        console.log(Element)
-        Element.style.fontSize = "20px"
+        Element.style.fontSize = size
+        currentSize = size
+        console.log(size)
     })
+}
+
+selectOptionLanguage.addEventListener("click", ()=>{
+    textSizeFunction(selectOptionLanguage.value)
+
+    if(selectOptionLanguage.value === "18px" || selectOptionLanguage.value === "19px"){
+        popUpSettings.style.width = "174px"
+        popUpSettings.style.height = "149px"
+        listPopUpSettingsAuxFont.style.height = "23.5px"
+        listPopUpSettingsAuxLanguage.style.height = "23.5px"
+        listPopUpSettingsAuxLanguage.style.top = "171.5px"
+    }else{
+        popUpSettings.style.width = "159px"
+        popUpSettings.style.height = "140px"
+        listPopUpSettingsAuxFont.style.height = "17.5px"
+        listPopUpSettingsAuxLanguage.style.height = "18.5px"
+        listPopUpSettingsAuxLanguage.style.top = "167.5px"
+    }
 })

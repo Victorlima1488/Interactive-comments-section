@@ -76,6 +76,7 @@ header{
     z-index: 3;
     h1{
         color: var(--h1-header-color);
+        font-size: 32px;
     }
     .lastNameTitle{
         padding: 2px 4px;
@@ -95,7 +96,7 @@ header{
                     background-color: transparent;
                     border: none;
                     padding: 10px;
-                    font-size: 14px;
+                    font-size: 15px;
                 }
                 #buttonProfile{
                     background-color: var(--button-color);
@@ -103,6 +104,7 @@ header{
                     border-radius: 20px;
                     color: var(--font-color-button);
                     padding: 10px 25px;
+                    font-size: 15px;
                 }
             }
         }
@@ -131,7 +133,7 @@ header{
         }
         li{
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             width: 100%;
             text-align: center;
             padding: 13.5px 0;
@@ -162,7 +164,26 @@ header{
         font-size: 14px;
     }
     #listPopUpSettingsAuxLanguage{
-        top: 165.5px;
+        top: 166.5px;
+        height: 18.5px;
+    }
+    #selectOptionLanguage{
+        width: 80%;
+        text-align: center;
+        border: none;
+        border-radius: 6px;
+        border: #FFF solid 1px;
+        color: var(--font-color);
+        background-color: var(--bg-popUp-setting);
+        padding: 1.5px;
+        appearance: none;
+        .optionFontSize{
+            color: var(--font-color);
+            padding: 1.5px;
+            &:hover{
+                background-color: #FFF;
+            }
+        }
     }
 }
 

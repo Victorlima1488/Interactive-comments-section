@@ -31,7 +31,17 @@
   </div>
 
   <div id="listPopUpSettingsAux">
-    <div id="listPopUpSettingsAuxFont" class="textSize">Tamanho 17</div>
+    <div id="listPopUpSettingsAuxFont" class="textSize">
+        <select name="pets" id="selectOptionLanguage">
+          <optgroup label="Font Size" class="optionFontSize">
+            <option value="15px" class="optionFontSize">1x</option>
+            <option value="16px" class="optionFontSize">2x</option>
+            <option value="17px" class="optionFontSize">3x</option>
+            <option value="18px" class="optionFontSize">4x</option>
+            <option value="19px" class="optionFontSize">5x</option>
+          </optgroup>
+        </select>
+    </div>
     <div id="listPopUpSettingsAuxLanguage" class="textSize">Português</div>
   </div>
 
@@ -139,8 +149,8 @@
   <div class="createComment">
     <img id="profilePicture" src="./images/avatars/image-maxblagun.png" alt=""></img>
     <textarea id="addComment" placeholder="Add a commnet..."></textarea>
-    <button id="sendComment" class="textSize">Send</button>
-    <button id="newSend" class="textSize">Reply</button>
+    <button id="sendComment">Send</button>
+    <button id="newSend">Reply</button>
   </div>
   <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

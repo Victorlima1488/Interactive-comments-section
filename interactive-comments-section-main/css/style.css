@@ -75,6 +75,7 @@ header {
 }
 header h1 {
   color: var(--h1-header-color);
+  font-size: 32px;
 }
 header .lastNameTitle {
   padding: 2px 4px;
@@ -93,7 +94,7 @@ header nav ul li #buttonComments, header nav ul li #buttonSttings {
   background-color: transparent;
   border: none;
   padding: 10px;
-  font-size: 14px;
+  font-size: 15px;
 }
 header nav ul li #buttonProfile {
   background-color: var(--button-color);
@@ -101,6 +102,7 @@ header nav ul li #buttonProfile {
   border-radius: 20px;
   color: var(--font-color-button);
   padding: 10px 25px;
+  font-size: 15px;
 }
 
 #popUpSettings {
@@ -127,7 +129,7 @@ header nav ul li #buttonProfile {
 }
 #popUpSettings #listPopUpSettings li {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   width: 100%;
   text-align: center;
   padding: 13.5px 0;
@@ -155,7 +157,26 @@ header nav ul li #buttonProfile {
   font-size: 14px;
 }
 #listPopUpSettingsAux #listPopUpSettingsAuxLanguage {
-  top: 165.5px;
+  top: 166.5px;
+  height: 18.5px;
+}
+#listPopUpSettingsAux #selectOptionLanguage {
+  width: 80%;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  border: #FFF solid 1px;
+  color: var(--font-color);
+  background-color: var(--bg-popUp-setting);
+  padding: 1.5px;
+  appearance: none;
+}
+#listPopUpSettingsAux #selectOptionLanguage .optionFontSize {
+  color: var(--font-color);
+  padding: 1.5px;
+}
+#listPopUpSettingsAux #selectOptionLanguage .optionFontSize:hover {
+  background-color: #FFF;
 }
 
 main {
