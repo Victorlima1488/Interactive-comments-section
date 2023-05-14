@@ -24,10 +24,13 @@ themeIcon.src = ""
 themeIcon.src = localStorage.getItem("iconTheme")
 theme.appendChild(themeIcon)
 const main = document.getElementById("main")
-const textSize = document.querySelectorAll(".textSize")
 let testing = false
 let currentTheme
 let currentIcon
+
+function getTextSizeElements() {
+    return document.querySelectorAll('.textSize');
+  }
 
 //Função principal, onde os comentários são criados.
 const createComment = (event) => {
@@ -480,9 +483,9 @@ listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
 })
 
 fontSizeSettings.addEventListener("click", ()=>{
-    
+    const textSize = getTextSizeElements()
     textSize.forEach((Element)=>{
         console.log(Element)
-        Element.style.fontSize = "16px"
+        Element.style.fontSize = "20px"
     })
 })
