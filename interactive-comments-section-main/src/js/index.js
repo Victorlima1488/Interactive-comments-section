@@ -24,6 +24,7 @@ themeIcon.src = ""
 themeIcon.src = localStorage.getItem("iconTheme")
 theme.appendChild(themeIcon)
 const main = document.getElementById("main")
+const selectOptionSize = document.getElementById("selectOptionSize")
 const selectOptionLanguage = document.getElementById("selectOptionLanguage")
 let testing = false
 let currentTheme
@@ -417,7 +418,7 @@ theme.addEventListener("click", () =>{
         currentIcon = "./images/icon-sun-theme.svg"
         localStorage.setItem("iconTheme", currentIcon)
         localStorage.setItem("theme", currentTheme)
-        theme.textContent = "Tema Purple"
+        theme.textContent = "Purple theme"
         localStorage.setItem("textTheme", theme.textContent)
     }else{
         themeBody.classList.remove("dracula")
@@ -426,7 +427,7 @@ theme.addEventListener("click", () =>{
         currentIcon = "./images/icon-dracula-theme.svg"
         localStorage.setItem("iconTheme", currentIcon)
         localStorage.setItem("theme", currentTheme)
-        theme.textContent = "Tema dracula"
+        theme.textContent = "Dracula theme"
         localStorage.setItem("textTheme", theme.textContent)
     }
     themeIcon.id = "themeIcon"
@@ -502,10 +503,10 @@ function textSizeFunction(size){
     })
 }
 
-selectOptionLanguage.addEventListener("click", ()=>{
-    textSizeFunction(selectOptionLanguage.value)
+selectOptionSize.addEventListener("click", ()=>{
+    textSizeFunction(selectOptionSize.value)
 
-    if(selectOptionLanguage.value === "18px" || selectOptionLanguage.value === "19px"){
+    if(selectOptionLaSize.value === "18px" || selectOptionSize.value === "19px"){
         popUpSettings.style.width = "174px"
         popUpSettings.style.height = "149px"
         listPopUpSettingsAuxFont.style.height = "23.5px"
@@ -518,4 +519,8 @@ selectOptionLanguage.addEventListener("click", ()=>{
         listPopUpSettingsAuxLanguage.style.height = "18.5px"
         listPopUpSettingsAuxLanguage.style.top = "167.5px"
     }
+})
+
+selectOptionLanguage.addEventListener("click", ()=>{
+
 })

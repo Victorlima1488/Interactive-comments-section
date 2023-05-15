@@ -160,7 +160,7 @@ header nav ul li #buttonProfile {
   top: 166.5px;
   height: 18.5px;
 }
-#listPopUpSettingsAux #selectOptionLanguage {
+#listPopUpSettingsAux #selectOptionSize, #listPopUpSettingsAux #selectOptionLanguage {
   width: 80%;
   text-align: center;
   border: none;
@@ -171,11 +171,11 @@ header nav ul li #buttonProfile {
   padding: 1.5px;
   appearance: none;
 }
-#listPopUpSettingsAux #selectOptionLanguage .optionFontSize {
+#listPopUpSettingsAux #selectOptionSize .optionFontSize, #listPopUpSettingsAux #selectOptionLanguage .optionFontSize {
   color: var(--font-color);
   padding: 1.5px;
 }
-#listPopUpSettingsAux #selectOptionLanguage .optionFontSize:hover {
+#listPopUpSettingsAux #selectOptionSize .optionFontSize:hover, #listPopUpSettingsAux #selectOptionLanguage .optionFontSize:hover {
   background-color: #FFF;
 }
 
