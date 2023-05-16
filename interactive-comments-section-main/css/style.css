@@ -14,6 +14,7 @@ body.dracula {
   --bg-hover-popUp-setting: #2f3146;
   --bg-main: #373a59;
   --button-color: #5a5757;
+  --button-color-hover: #413e3e;
   --color-postingTime: #A6A8AC;
   --color-divReply: #c5c5cc;
   --border-left-line: #d7c0f7;
@@ -39,9 +40,10 @@ body.purple {
   --bg-hover-popUp-setting: #d9d9eb;
   --bg-main: #d9d9eb;
   --button-color: #6d6ff0;
+  --button-color-hover: #343de6;
   --color-postingTime: #A6A8AC;
   --color-divReply: #585ad4;
-  --border-left-line: #bdbdc2;
+  --border-left-line: #3e40b1;
   --color-userName: #afb0f0;
   --text-popUp-color: #808080;
   --button-confirmDelet: #ED6468;
@@ -103,6 +105,10 @@ header nav ul li #buttonProfile {
   color: var(--font-color-button);
   padding: 10px 25px;
   font-size: 15px;
+  transition: 0.5s;
+}
+header nav ul li #buttonProfile:hover {
+  background-color: var(--button-color-hover);
 }
 
 #popUpSettings {
@@ -474,6 +480,10 @@ main ul #line #replyComment #replyCommentText #replyUserName {
   background-color: var(--button-color);
   border: none;
   border-radius: 30px;
+  transition: 0.5s;
+}
+.createComment #sendComment:hover {
+  background-color: var(--button-color-hover);
 }
 .createComment #newSend {
   display: none;
@@ -485,6 +495,10 @@ main ul #line #replyComment #replyCommentText #replyUserName {
   background-color: var(--button-color);
   border: none;
   border-radius: 30px;
+  transition: 0.5s;
+}
+.createComment #newSend:hover {
+  background-color: var(--button-color-hover);
 }
 
 /*# sourceMappingURL=style.css.map */

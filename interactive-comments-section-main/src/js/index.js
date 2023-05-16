@@ -26,17 +26,23 @@ theme.appendChild(themeIcon)
 const main = document.getElementById("main")
 const selectOptionSize = document.getElementById("selectOptionSize")
 const selectOptionLanguage = document.getElementById("selectOptionLanguage")
+const fontHeader = document.querySelectorAll(".textSize")
 let testing = false
 let currentTheme
 let currentIcon
-let currentSize = "15px"
+let currentSize = localStorage.getItem("size")
+console.log(currentSize)
+
+fontHeader.forEach((Element)=>{
+    Element.style.fontSize = currentSize
+})
 
 function getTextSizeElements() {
     return document.querySelectorAll('.textSize');
   }
 
 //Função principal, onde os comentários são criados.
-const createComment = (event) => {
+const createComment = () => {
     
     if(addComment.value){
 
@@ -302,75 +308,78 @@ const createComment = (event) => {
                         newSend.style.display = "none"
 
                         isEventRunning = true
+
+                        replyEdit.addEventListener("click", () =>{
+                            if(counter2 === 0){
+                                replyDelet.style.display = "block"
+                                counter2 = 1
+                            }else{
+                                replyDelet.style.display = "none"
+                                counter2 = 0
+                            }
+                
+                            replyEdit.style.display = "none"
+                            replyCheck.style.display = "block"
+                
+                            addComment.value = replyCommentText.lastChild.textContent
+                            addComment.focus()
+                
+                            replyCheck.addEventListener("click", () =>{
+                                replyCommentText.lastChild.textContent = addComment.value
+                
+                                replyEdit.style.display = "block"
+                                replyCheck.style.display = "none"
+                                replyDelet.style.display = "none"
+                
+                                addComment.value = ""
+                            })
+                        });
+
+                        replyDelet.addEventListener("click", () =>{
+
+                            const popUp = document.createElement("div")
+                            popUp.id = "pop-up"
+                            const popUpTitle = document.createElement("h3")
+                            popUpTitle.id = "popUpTitle"
+                            popUpTitle.textContent = "Delete Comment"
+                            const textPopUp = document.createElement("div")
+                            textPopUp.id = "textPopUp"
+                            textPopUp.textContent = "Once the comment is deleted, the operation cannot be undone. Are you sure?"
+                            const buttonsPopUp = document.createElement("div")
+                            buttonsPopUp.id = "buttonsPopUp"
+                            const confirmDelet = document.createElement("button")
+                            confirmDelet.id = "confirmDelet"
+                            confirmDelet.textContent = "Confirm"
+                            const confirmCancel = document.createElement("button")
+                            confirmCancel.textContent = "Cancel"
+                            confirmCancel.id = "confirmCancel"
+                            const darkFun = document.createElement("div")
+                            darkFun.id = "darkFun"
+                
+                            document.body.appendChild(darkFun)
+                            document.body.appendChild(popUp)
+                            popUp.appendChild(popUpTitle)
+                            popUp.appendChild(textPopUp)
+                            popUp.appendChild(buttonsPopUp)
+                            buttonsPopUp.appendChild(confirmDelet)
+                            buttonsPopUp.appendChild(confirmCancel)
+                
+                            confirmDelet.addEventListener("click", () =>{
+                                line.remove()
+                                addComment.value = ""
+                
+                                popUp.remove()
+                                darkFun.remove()
+                            })
+                
+                            confirmCancel.addEventListener("click", () =>{
+                                popUp.remove()
+                            })
+                        })
+        
                     }
                 } 
-                replyEdit.addEventListener("click", () =>{
-                    if(counter2 === 0){
-                        replyDelet.style.display = "block"
-                        counter2 = 1
-                    }else{
-                        replyDelet.style.display = "none"
-                        counter2 = 0
-                    }
-        
-                    replyEdit.style.display = "none"
-                    replyCheck.style.display = "block"
-        
-                    addComment.value = replyCommentText.lastChild.textContent
-                    addComment.focus()
-        
-                    replyCheck.addEventListener("click", () =>{
-                        replyCommentText.lastChild.textContent = addComment.value
-        
-                        replyEdit.style.display = "block"
-                        replyCheck.style.display = "none"
-                        replyDelet.style.display = "none"
-        
-                        addComment.value = ""
-                    })
-                });
-
-                replyDelet.addEventListener("click", () =>{
-
-                    const popUp = document.createElement("div")
-                    popUp.id = "pop-up"
-                    const popUpTitle = document.createElement("h3")
-                    popUpTitle.id = "popUpTitle"
-                    popUpTitle.textContent = "Delete Comment"
-                    const textPopUp = document.createElement("div")
-                    textPopUp.id = "textPopUp"
-                    textPopUp.textContent = "Once the comment is deleted, the operation cannot be undone. Are you sure?"
-                    const buttonsPopUp = document.createElement("div")
-                    buttonsPopUp.id = "buttonsPopUp"
-                    const confirmDelet = document.createElement("button")
-                    confirmDelet.id = "confirmDelet"
-                    confirmDelet.textContent = "Confirm"
-                    const confirmCancel = document.createElement("button")
-                    confirmCancel.textContent = "Cancel"
-                    confirmCancel.id = "confirmCancel"
-                    const darkFun = document.createElement("div")
-                    darkFun.id = "darkFun"
-        
-                    document.body.appendChild(darkFun)
-                    document.body.appendChild(popUp)
-                    popUp.appendChild(popUpTitle)
-                    popUp.appendChild(textPopUp)
-                    popUp.appendChild(buttonsPopUp)
-                    buttonsPopUp.appendChild(confirmDelet)
-                    buttonsPopUp.appendChild(confirmCancel)
-        
-                    confirmDelet.addEventListener("click", () =>{
-                        line.remove()
-                        addComment.value = ""
-        
-                        popUp.remove()
-                        darkFun.remove()
-                    })
-        
-                    confirmCancel.addEventListener("click", () =>{
-                        popUp.remove()
-                    })
-                })
+                
             }
 
             newSend.addEventListener("click", createReply)
@@ -401,7 +410,6 @@ buttonSttings.addEventListener("click", () =>{
 })
 
 main.addEventListener("click", upPopUp)
-
 
 function upPopUp(){
     if(testing){
@@ -501,26 +509,34 @@ function textSizeFunction(size){
         currentSize = size
         console.log(size)
     })
+
+    let newSize = size
+    localStorage.setItem("size", newSize)
 }
 
-selectOptionSize.addEventListener("click", ()=>{
+function settingSize(){
+    console.log(selectOptionSize.value)
     textSizeFunction(selectOptionSize.value)
-
-    if(selectOptionLaSize.value === "18px" || selectOptionSize.value === "19px"){
+    if(selectOptionSize.value === "18px" || selectOptionSize.value === "19px"){
         popUpSettings.style.width = "174px"
-        popUpSettings.style.height = "149px"
+        popUpSettings.style.height = "150px"
         listPopUpSettingsAuxFont.style.height = "23.5px"
-        listPopUpSettingsAuxLanguage.style.height = "23.5px"
+        listPopUpSettingsAuxLanguage.style.height = "21.5px"
         listPopUpSettingsAuxLanguage.style.top = "171.5px"
-    }else{
-        popUpSettings.style.width = "159px"
-        popUpSettings.style.height = "140px"
-        listPopUpSettingsAuxFont.style.height = "17.5px"
-        listPopUpSettingsAuxLanguage.style.height = "18.5px"
+    }else if(selectOptionSize.value === "17px"){
+        listPopUpSettingsAuxLanguage.style.height = "20.5px"
+        listPopUpSettingsAuxLanguage.style.top = "168.5px"
+    }else if(selectOptionSize.value === "16px"){
+        listPopUpSettingsAuxLanguage.style.height = "19.5px"
         listPopUpSettingsAuxLanguage.style.top = "167.5px"
     }
-})
+    else{
+        popUpSettings.style.width = "159px"
+        popUpSettings.style.height = "140px"
+        listPopUpSettingsAuxFont.style.height = "19.5px"
+        listPopUpSettingsAuxLanguage.style.height = "18.5px"
+        listPopUpSettingsAuxLanguage.style.top = "166.5px"
+    }
+}
 
-selectOptionLanguage.addEventListener("click", ()=>{
-
-})
+selectOptionSize.addEventListener("click", settingSize)
