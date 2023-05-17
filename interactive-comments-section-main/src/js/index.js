@@ -27,6 +27,7 @@ const main = document.getElementById("main")
 const selectOptionSize = document.getElementById("selectOptionSize")
 const selectOptionLanguage = document.getElementById("selectOptionLanguage")
 const fontHeader = document.querySelectorAll(".textSize")
+let x = true
 let testing = false
 let currentTheme
 let currentIcon
@@ -36,6 +37,26 @@ console.log(currentSize)
 fontHeader.forEach((Element)=>{
     Element.style.fontSize = currentSize
 })
+
+if(localStorage.getItem("size") === "18px" || localStorage.getItem("size") === "19px"){
+    popUpSettings.style.width = "174px"
+        popUpSettings.style.height = "150px"
+        listPopUpSettingsAuxFont.style.height = "23.5px"
+        listPopUpSettingsAuxLanguage.style.height = "22.5px"
+        listPopUpSettingsAuxLanguage.style.top = "171.5px"
+    }else if(selectOptionSize.value === "17px"){
+        listPopUpSettingsAuxLanguage.style.height = "20.5px"
+        listPopUpSettingsAuxLanguage.style.top = "168.5px"
+    }else if(selectOptionSize.value === "16px"){
+        listPopUpSettingsAuxLanguage.style.height = "19.5px"
+        listPopUpSettingsAuxLanguage.style.top = "167.5px"
+    }else{
+        popUpSettings.style.width = "159px"
+        popUpSettings.style.height = "140px"
+        listPopUpSettingsAuxFont.style.height = "19.5px"
+        listPopUpSettingsAuxLanguage.style.height = "18.5px"
+        listPopUpSettingsAuxLanguage.style.top = "166.5px"
+    }
 
 function getTextSizeElements() {
     return document.querySelectorAll('.textSize');
@@ -47,8 +68,9 @@ const createComment = () => {
     if(addComment.value){
 
         // Variáveis de contagem para as operações codicionais em algumas funções.
-        let counter1 = 0
-        let counter2 = 0
+        let counter1 = true
+        let counter2 = true
+        let c = 0
 
         // Instanciadno a classe Comment.
         const newComment = new Comment("Victor", "@_vitorlimaa_")
@@ -149,12 +171,9 @@ const createComment = () => {
 
         // Criação dos eventos para editar e deletar o comentário, assim como responder algum comentário.
         edit.addEventListener("click", () =>{
-            if(counter1 === 0){
+            if(counter1){
                 delet.style.display = "block"
-                counter1 = 1
-            }else{
-                delet.style.display = "none"
-                counter1 = 0
+                counter1 = false
             }
 
             edit.style.display = "none"
@@ -162,17 +181,22 @@ const createComment = () => {
 
             addComment.value = commentText.lastChild.textContent
             addComment.focus()
-
-            check.addEventListener("click", () =>{
-                commentText.lastChild.textContent = addComment.value
-
-                edit.style.display = "block"
-                check.style.display = "none"
-                delet.style.display = "none"
-
-                addComment.value = ""
-            })
         });
+
+        check.addEventListener("click", () =>{
+            commentText.lastChild.textContent = addComment.value
+
+            if(!counter1){
+                delet.style.display = "none"
+                counter1 = true
+            }
+
+            edit.style.display = "block"
+            check.style.display = "none"
+            // delet.style.display = "none"
+
+            addComment.value = ""
+        })
 
         delet.addEventListener("click", () =>{
 
@@ -221,6 +245,22 @@ const createComment = () => {
 
         divReply.addEventListener("click", () =>{
 
+            const newCommentReply = new Comment("Victor", "@_vitorlimaa_")
+            newCommentReply.creationTime()
+
+            x = false
+
+                addComment.addEventListener("keyup", (event) =>{
+                    if(!x){
+                        if (event.keyCode === 13) {
+                            event.preventDefault()
+                            createReply(event)
+                        }
+                    }
+                });
+
+                console.log(x)
+
             send.style.display = "none"
             newSend.style.display = "block"
             addComment.focus()
@@ -232,6 +272,9 @@ const createComment = () => {
                 if(!isEventRunning){
 
                     if(addComment.value){
+
+                        c+=1
+                        x = true
 
                         addComment.focus()
                         send.style.display = "none"
@@ -258,7 +301,11 @@ const createComment = () => {
 
                         const replyPostingTime = document.createElement("div")
                         replyPostingTime.id = "replyPostingTime"
-                        replyPostingTime.textContent = newComment.getPostingTime()
+                        replyPostingTime.textContent = newCommentReply.getPostingTime()
+                        setInterval(() => {
+                            replyPostingTime.textContent = newCommentReply.getPostingTime();
+                        }, 1000);
+                        
 
                         const replyEdit = document.createElement("img")
                         replyEdit.id = "replyEdit"
@@ -301,7 +348,6 @@ const createComment = () => {
                         replyProfileAndResponsePostingTime.appendChild(replyEdit)
                         replyProfileAndResponsePostingTime.appendChild(replyCheck)
                         replyProfileAndResponsePostingTime.appendChild(replyDelet)
-                        // line.appendChild(breakLine)
 
                         addComment.value = ""
                         send.style.display = "block"
@@ -310,12 +356,10 @@ const createComment = () => {
                         isEventRunning = true
 
                         replyEdit.addEventListener("click", () =>{
-                            if(counter2 === 0){
+                            if(counter2){
                                 replyDelet.style.display = "block"
-                                counter2 = 1
-                            }else{
-                                replyDelet.style.display = "none"
-                                counter2 = 0
+                                counter2 = false
+                                console.log(counter2)
                             }
                 
                             replyEdit.style.display = "none"
@@ -323,17 +367,23 @@ const createComment = () => {
                 
                             addComment.value = replyCommentText.lastChild.textContent
                             addComment.focus()
-                
-                            replyCheck.addEventListener("click", () =>{
-                                replyCommentText.lastChild.textContent = addComment.value
-                
-                                replyEdit.style.display = "block"
-                                replyCheck.style.display = "none"
-                                replyDelet.style.display = "none"
-                
-                                addComment.value = ""
-                            })
                         });
+
+                        replyCheck.addEventListener("click", () =>{
+                            replyCommentText.lastChild.textContent = addComment.value
+
+                            if(!counter2){
+                                replyDelet.style.display = "block"
+                                counter2 = true
+                                console.log(counter2)
+                            }
+            
+                            replyEdit.style.display = "block"
+                            replyCheck.style.display = "none"
+                            replyDelet.style.display = "none"
+            
+                            addComment.value = ""
+                        })
 
                         replyDelet.addEventListener("click", () =>{
 
@@ -365,7 +415,12 @@ const createComment = () => {
                             buttonsPopUp.appendChild(confirmCancel)
                 
                             confirmDelet.addEventListener("click", () =>{
-                                line.remove()
+                                c-=1
+                                counter2 = true
+                                replyComment.remove()
+                                if(c === 0){
+                                    line.remove()
+                                }
                                 addComment.value = ""
                 
                                 popUp.remove()
@@ -393,9 +448,11 @@ send.addEventListener("click", createComment)
 
 // Chamando a função principal com a tecla Enter.
 addComment.addEventListener("keyup", (event) =>{
-    if (event.keyCode === 13) {
-        event.preventDefault()
-        createComment(event)
+    if(x){
+        if (event.keyCode === 13) {
+            event.preventDefault()
+            createComment(event)
+        }
     }
 });
 
