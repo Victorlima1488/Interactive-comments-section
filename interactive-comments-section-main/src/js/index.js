@@ -12,7 +12,6 @@ const fontSizeSettings = document.getElementById("fontSizeSettings")
 const LanguageSettings = document.getElementById("LanguageSettings")
 const main = document.getElementById("main")
 const selectOptionSize = document.getElementById("selectOptionSize")
-const selectOptionLanguage = document.getElementById("selectOptionLanguage")
 const fontHeader = document.querySelectorAll(".textSize")
 
 const themeBody = document.getElementById("body")
@@ -30,7 +29,7 @@ themeIcon.src = localStorage.getItem("iconTheme")
 theme.appendChild(themeIcon)
 
 let x = true
-let testing = false
+export let testing = false
 let currentTheme
 let currentIcon
 let currentSize = localStorage.getItem("size")
@@ -41,7 +40,6 @@ fontHeader.forEach((Element)=>{
 
 updatingSettingsWindowSize()
 
-//Função principal, onde os comentários são criados.
 const createComment = () => {
     
     if(addComment.value){
@@ -422,10 +420,8 @@ const createComment = () => {
     }
 }
 
-// Chamando a função principal.
 send.addEventListener("click", createComment)
 
-// Chamando a função principal com a tecla Enter.
 addComment.addEventListener("keyup", (event) =>{
     if(x){
         if (event.keyCode === 13) {
@@ -531,6 +527,8 @@ listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
     LanguageSettings.style.backgroundColor = ""
 })
 
+selectOptionSize.addEventListener("click", configurationWindow)
+
 function downConfigurationWindow(){
     if(testing){
         testing = false
@@ -582,4 +580,3 @@ function getTextSizeElements() {
     return document.querySelectorAll('.textSize');
 }
 
-selectOptionSize.addEventListener("click", configurationWindow)
