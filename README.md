@@ -20,6 +20,9 @@ this application is a comments section with a login validation system. It can be
 ![Reply Comments](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20231836.png)
 ### 4 - Change the site's theme and font size.
 ![Theme](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20233843.png)
+###  5 - Edit and delete comments.
+![edit](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20235659.png)
+![delet](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20235713.png)
 ## Features
 #### The main features of the application are:
 * creating comments.
