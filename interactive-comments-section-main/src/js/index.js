@@ -1,7 +1,5 @@
-// Importação da classe Comments.
 import { Comment } from "../js/Comment.js"
 
-// criação das variáveis globais.
 const comments = document.getElementById("comments")
 const send = document.getElementById("sendComment")
 const addComment = document.getElementById("addComment")
@@ -12,55 +10,36 @@ const listPopUpSettingsAuxFont = document.getElementById("listPopUpSettingsAuxFo
 const listPopUpSettingsAuxLanguage = document.getElementById("listPopUpSettingsAuxLanguage")
 const fontSizeSettings = document.getElementById("fontSizeSettings")
 const LanguageSettings = document.getElementById("LanguageSettings")
+const main = document.getElementById("main")
+const selectOptionSize = document.getElementById("selectOptionSize")
+const selectOptionLanguage = document.getElementById("selectOptionLanguage")
+const fontHeader = document.querySelectorAll(".textSize")
+
 const themeBody = document.getElementById("body")
 themeBody.classList.remove("purple")
 themeBody.classList.add(localStorage.getItem("theme"))
+
 const theme = document.getElementById("theme")
 theme.textContent = ""
 theme.textContent = localStorage.getItem("textTheme")
+
 const themeIcon = document.createElement("img")
 themeIcon.id = "themeIcon"
 themeIcon.src = ""
 themeIcon.src = localStorage.getItem("iconTheme")
 theme.appendChild(themeIcon)
-const main = document.getElementById("main")
-const selectOptionSize = document.getElementById("selectOptionSize")
-const selectOptionLanguage = document.getElementById("selectOptionLanguage")
-const fontHeader = document.querySelectorAll(".textSize")
+
 let x = true
 let testing = false
 let currentTheme
 let currentIcon
 let currentSize = localStorage.getItem("size")
-console.log(currentSize)
 
 fontHeader.forEach((Element)=>{
     Element.style.fontSize = currentSize
 })
 
-if(localStorage.getItem("size") === "18px" || localStorage.getItem("size") === "19px"){
-    popUpSettings.style.width = "174px"
-        popUpSettings.style.height = "150px"
-        listPopUpSettingsAuxFont.style.height = "23.5px"
-        listPopUpSettingsAuxLanguage.style.height = "22.5px"
-        listPopUpSettingsAuxLanguage.style.top = "171.5px"
-    }else if(selectOptionSize.value === "17px"){
-        listPopUpSettingsAuxLanguage.style.height = "20.5px"
-        listPopUpSettingsAuxLanguage.style.top = "168.5px"
-    }else if(selectOptionSize.value === "16px"){
-        listPopUpSettingsAuxLanguage.style.height = "19.5px"
-        listPopUpSettingsAuxLanguage.style.top = "167.5px"
-    }else{
-        popUpSettings.style.width = "159px"
-        popUpSettings.style.height = "140px"
-        listPopUpSettingsAuxFont.style.height = "19.5px"
-        listPopUpSettingsAuxLanguage.style.height = "18.5px"
-        listPopUpSettingsAuxLanguage.style.top = "166.5px"
-    }
-
-function getTextSizeElements() {
-    return document.querySelectorAll('.textSize');
-  }
+updatingSettingsWindowSize()
 
 //Função principal, onde os comentários são criados.
 const createComment = () => {
@@ -466,14 +445,7 @@ buttonSttings.addEventListener("click", () =>{
     }
 })
 
-main.addEventListener("click", upPopUp)
-
-function upPopUp(){
-    if(testing){
-        testing = false
-        popUpSettings.style.transform = "translateY(-198px)"
-    }
-}
+main.addEventListener("click", downConfigurationWindow)
 
 theme.addEventListener("click", () =>{
     if(themeBody.classList.contains("purple")){
@@ -559,7 +531,14 @@ listPopUpSettingsAuxLanguage.addEventListener("mouseout", ()=>{
     LanguageSettings.style.backgroundColor = ""
 })
 
-function textSizeFunction(size){
+function downConfigurationWindow(){
+    if(testing){
+        testing = false
+        popUpSettings.style.transform = "translateY(-198px)"
+    }
+}
+
+function updatingFontSize(size){
     const textSize = getTextSizeElements()
     textSize.forEach((Element)=>{
         Element.style.fontSize = size
@@ -571,19 +550,22 @@ function textSizeFunction(size){
     localStorage.setItem("size", newSize)
 }
 
-function settingSize(){
-    console.log(selectOptionSize.value)
-    textSizeFunction(selectOptionSize.value)
-    if(selectOptionSize.value === "18px" || selectOptionSize.value === "19px"){
+function configurationWindow(){
+    updatingFontSize(selectOptionSize.value)
+    updatingSettingsWindowSize()
+}
+
+function updatingSettingsWindowSize(){
+    if(localStorage.getItem("size") === "18px" || localStorage.getItem("size") === "19px"){
         popUpSettings.style.width = "174px"
         popUpSettings.style.height = "150px"
         listPopUpSettingsAuxFont.style.height = "23.5px"
         listPopUpSettingsAuxLanguage.style.height = "21.5px"
         listPopUpSettingsAuxLanguage.style.top = "171.5px"
-    }else if(selectOptionSize.value === "17px"){
+    }else if(localStorage.getItem("size") === "17px"){
         listPopUpSettingsAuxLanguage.style.height = "20.5px"
         listPopUpSettingsAuxLanguage.style.top = "168.5px"
-    }else if(selectOptionSize.value === "16px"){
+    }else if(localStorage.getItem("size") === "16px"){
         listPopUpSettingsAuxLanguage.style.height = "19.5px"
         listPopUpSettingsAuxLanguage.style.top = "167.5px"
     }
@@ -596,4 +578,8 @@ function settingSize(){
     }
 }
 
-selectOptionSize.addEventListener("click", settingSize)
+function getTextSizeElements() {
+    return document.querySelectorAll('.textSize');
+}
+
+selectOptionSize.addEventListener("click", configurationWindow)
