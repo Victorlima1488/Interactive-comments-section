@@ -12,10 +12,26 @@ this application is a comments section with a login validation system. It can be
 * Github
 
 ## How to use
-### 1 - Ao acessar o prijeto você verá essa página inicial.
+### 1 - When accessing the project you will see this home page.
 ![Main page](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20231602.png)
-### 2 - Você pode adicionar comentários.
+### 2 - You can add comments.
 ![comments](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20231730.png)
-### 3 - Você pode responder comentários.
+### 3 - You can reply to comments.
 ![Reply Comments](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20231836.png)
-![Theme](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/2023-05-16%2023-20-14.mkv)
+### 4 - Change the site's theme and font size.
+![Theme](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Captura%20de%20tela%202023-05-16%20233843.png)
+## Features
+#### The main features of the application are:
+* creating comments.
+* editing and deleting comments.
+* personalized interaction user experience.
+## Links
+* repository: https://github.com/Victorlima1488/interactive-comments-section
+  * In case of sensitive bugs like security vulnerabilities, please contact victorlima.softwaredeveloper@gmail.com. We value your effort     to improve the security and privacy of this project!
+## Versioning
+1.0.0
+## Authors
+* Victor Ériko de Lima Maciel.
+
+Please follow github and join us! Thanks to visiting me and good coding!
+
