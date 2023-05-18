@@ -44,12 +44,16 @@ body {
   justify-content: center;
 }
 #container #rightContainer #singIn form input {
+  color: #FFF;
   padding: 8px;
   width: 90%;
   border: none;
   border-bottom: #828486 solid 1px;
   background-color: transparent;
   caret-color: #FFF;
+}
+#container #rightContainer #singIn form input::placeholder {
+  padding-left: 5px;
 }
 #container #rightContainer #singIn form input:focus {
   outline: none;
@@ -66,6 +70,8 @@ body {
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  background-color: #5a5757;
+  color: #FFF;
 }
 
 /*# sourceMappingURL=login.css.map */

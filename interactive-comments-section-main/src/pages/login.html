@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
     <link rel="stylesheet" href="../../css/login.css">
+    <script type="module" src="../js/validacao.js" defer></script>
     <title>Login - Interactive comments section</title>
 </head>
 <body>
@@ -14,16 +15,16 @@
         <div id="rightContainer">
             <div id="singIn">
                 <form action="">
-                    <input type="text" placeholder="first name">
-                    <input type="text" placeholder="user name">
-                    <input type="email" placeholder="your e-mail">
-                    <input type="password" placeholder="password">
-                    <input type="password" placeholder="confirm password">
+                    <input type="text" placeholder="first name" id="name">
+                    <input type="text" placeholder="user name" id="userName">
+                    <input type="email" placeholder="your e-mail" id="email">
+                    <input type="password" placeholder="password" id="password">
+                    <input type="password" placeholder="confirm password" id="confirmPassword">
+                    <div class="buttons">
+                        <button id="buttonLogIn" type="button">Log In</button>
+                        <button id="buttonSingIn">Sing In</button>
+                    </div>
                 </form>
-                <div class="buttons">
-                    <button id="buttonLogIn">Log In</button>
-                    <button id="buttonSingIn">Sing In</button>
-                </div>
             </div>
         </div>
     </div>
