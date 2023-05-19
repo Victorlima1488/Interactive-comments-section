@@ -10,6 +10,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #container{
@@ -54,12 +55,10 @@ body{
                     }
                 }
             }
-        }   
-        #logIn{
-            .LogInAndSingIn{
-                margin-top: 10px;
-            }
-        }  
+        }
+        #singIn{
+            display: none;
+        }
     }
 
     .LogInAndSingIn{

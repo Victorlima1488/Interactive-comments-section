@@ -11,6 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 #container {
@@ -58,8 +59,8 @@ body {
 #container #rightContainer #singIn form input:focus, #container #rightContainer #logIn form input:focus {
   outline: none;
 }
-#container #rightContainer #logIn .LogInAndSingIn {
-  margin-top: 10px;
+#container #rightContainer #singIn {
+  display: none;
 }
 #container .LogInAndSingIn {
   width: 100%;
