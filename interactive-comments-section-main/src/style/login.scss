@@ -24,7 +24,7 @@ body{
     #rightContainer{
         height: 100%;
         background-color: #181a1b;
-        #singIn{
+        #singIn, #logIn{
             width: 100%;
             height: 100%;
             display: flex;
@@ -54,22 +54,39 @@ body{
                     }
                 }
             }
-            .buttons{
-                margin-top: 50px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                #buttonLogIn, #buttonSingIn{
-                    padding: 12px 25px;
-                    border: none;
-                    border-radius: 30px;
-                    cursor: pointer;
-                    background-color: #5a5757;
-                    color: #FFF;
-                }
+        }   
+        #logIn{
+            .LogInAndSingIn{
+                margin-top: 10px;
+            }
+        }  
+    }
+
+    .LogInAndSingIn{
+        width: 100%;
+        .buttons{
+            margin-top: 25px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            #buttonLogIn, #buttonSingIn{
+                padding: 12px 25px;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                background-color: #5a5757;
+                color: #FFF;
+            }
+            #buttonLogIn{
+                display: none;
             }
         }
-          
+        p{
+            padding-top: 12px;
+            text-align: center;
+            color: #FFF;
+            cursor: pointer;
+        }
     }
 }

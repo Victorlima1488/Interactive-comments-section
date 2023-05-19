@@ -1,32 +1,84 @@
 import { User } from "./User.js"
 
 const RegisteredUsers = []
-
 const name = document.getElementById("name")
 const userName = document.getElementById("userName")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const confirmPassword = document.getElementById("confirmPassword")
 const buttonLogIn = document.getElementById("buttonLogIn")
+const buttonSingIn = document.getElementById("buttonSingIn")
 
-buttonLogIn.addEventListener("click", ()=>{
+buttonSingIn.addEventListener("click", ()=>{
+
+    console.log("clicou")
 
     const newUser = new User()
 
-    newUser.setName(name.value)
-    newUser.setUserName(userName.value)
-    newUser.setEmail(email.value)
-    newUser.setPassword(password.value)
+    const currentName = name.value
+    const currentUserName = userName.value
+    const currentEmail = email.value
+    const currentPassword = password.value
+    const currentConfirmPassword = confirmPassword.value
+    let c = 0
 
-    console.log(newUser.getName() + "\n" + newUser.getUserName() + "\n" + newUser.getEmail() + "\n" + newUser.getPassword())
+    if(RegisteredUsers.length === 0){
+        newUser.setName(currentName)
+        newUser.setUserName(currentUserName)
+        newUser.setEmail(currentEmail)
+        newUser.setPassword(currentPassword)
+        RegisteredUsers.push(newUser)
+        console.log(RegisteredUsers)
+        name.value = ""
+        userName.value = ""
+        email.value = ""
+        password.value = ""
+        confirmPassword.value = ""
+    }else{
+        RegisteredUsers.forEach((user)=>{
+            console.log("testando")
+            c += 1
+            if(currentUserName === user.userName){
+                console.log(`CurrenteUSerName: ${currentUserName} e user.userName: ${user.userName}`)
+                alert("Usuário já existe")
+                name.value = ""
+                userName.value = ""
+                email.value = ""
+                password.value = ""
+                confirmPassword.value = ""
+                c = 0
+            }
+            if(currentEmail === user.email){
+                console.log(`CurrenteUSerName: ${currentUserName} e user.userName: ${user.userName}`)
+                alert("emial já cadastrado")
+                name.value = ""
+                userName.value = ""
+                email.value = ""
+                password.value = ""
+                confirmPassword.value = ""
+                c = 0
+            }
+        })
 
-    RegisteredUsers.push(newUser)
-
-    RegisteredUsers.forEach((user)=>{
-        if(RegisteredUsers.length === 1){
-            console.log("ok")
-        }else if(newUser.getUserName() === user.userName){
-            alert("Usuário já existe")
+        if(c === RegisteredUsers.length){
+            if(currentPassword === currentConfirmPassword){
+                newUser.setName(currentName)
+                newUser.setUserName(currentUserName)
+                newUser.setEmail(currentEmail)
+                newUser.setPassword(currentPassword)
+                RegisteredUsers.push(newUser)
+                console.log(RegisteredUsers)
+                name.value = ""
+                userName.value = ""
+                email.value = ""
+                password.value = ""
+                confirmPassword.value = ""
+            }else{
+                alert("As senhs devem ser iguais.")
+            }
         }
-    })
+
+    }
+
+
 })
