@@ -2,7 +2,7 @@
 
 ### In progress...
 ## Interactive-comments-section
-This application is a comments section with a login validation system. It can be applied, for example, to company platforms so that teams can post comments with suggestions and tips.
+This application is a comments section with a login validation system. It can be applied, for example, to company platforms so that teams can post comments with suggestions and tips. One of the goals of this project was to do it entirely with pure JavaScript, without the use of frameWorks, both for the comments section and for the login validation system.
 
 ## Technology
 * JavaScript
