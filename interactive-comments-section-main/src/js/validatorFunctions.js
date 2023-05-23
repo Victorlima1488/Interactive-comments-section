@@ -5,24 +5,18 @@ export function register(RegisteredUsers, name, userName, email, password, confi
     const newUser = new User()
 
     let c = localStorage.getItem("if") ?? true
-    console.log(c)
     
-    if(completedFields(name, userName, email, password, confirmPassword)){
-        console.log("teste1")
+    if(completedFields(name, userName, email, password, confirmPassword)){ 
         if(c != "false"){
             console.log("if")
             console.log(c)
             if(checkPasswords(password.value, confirmPassword.value)){
-                console.log("Tá vazio")
                 newUser.setName(name.value)
                 newUser.setUserName(userName.value)
                 newUser.setEmail(email.value)
                 newUser.setPassword(password.value)
-        
-                RegisteredUsers.push(newUser)
-                console.log(RegisteredUsers)
 
-                let length = RegisteredUsers.length
+                let length = 1
 
                 saveToLocalStorage(length, name.value, userName.value, email.value, password.value)
 
@@ -40,21 +34,19 @@ export function register(RegisteredUsers, name, userName, email, password, confi
             }
         }else{
             console.log("else")
-            console.log(RegisteredUsers)
-            for(let i = 1; i <= length+1; i++){
-                console.log("testando")
-                console.log(localStorage.getItem("userName" + i))
-                if(checkUsername(localStorage.getItem("userName" + i, name))){
-                    if(checkEmail(localStorage.getItem("email" + i, email))){
-                        if(checkPasswords(localStorage.getItem("password" + i, confirmPassword))){
-                            console.log("Tá vazio")
+            console.log(c)
+            for(let i = 1; i <= length; i++){
+                console.log("chegou no for")
+                if(checkUsername(localStorage.getItem("userName" + i) , userName.value)){
+                    console.log(`O primeiro if é: ${localStorage.getItem("userName" + i)} e name é: ${userName.value}`)
+                    if(checkEmail(localStorage.getItem("email" + i), email.value)){
+                        console.log(`O segundo if é: ${localStorage.getItem("email" + i)} e email é: ${email.value}`)
+                        if(checkPasswords(localStorage.getItem("password" + i), confirmPassword.value)){
+                            console.log(`O terceiro if é: ${localStorage.getItem("password" + i)} e password é: ${confirmPassword.value}`)
                             newUser.setName(name.value)
                             newUser.setUserName(userName.value)
                             newUser.setEmail(email.value)
                             newUser.setPassword(password.value)
-
-                            RegisteredUsers.push(newUser)
-                            console.log(RegisteredUsers)   
 
                             length +=1
 
@@ -66,12 +58,16 @@ export function register(RegisteredUsers, name, userName, email, password, confi
                             window.location.href = "../../index.html"
                         }else{
                             alert("As senhas devem ser iguais!")
+                            password.value = ""
+                            confirmPassword.value = ""
                         }
                     }else{
                         alert("Email já existe!")
+                        email.value = ""
                     }
                 }else{
                     alert("Usuário já existe!")
+                    userName.value = ""
                 }
             }
         }
@@ -102,14 +98,14 @@ function clearInputs(name, userName, email, password, confirmPassword){
 }
 
 function checkUsername(userName, user){
-    if(userName != user){
+    if(userName !== user){
         return true
     }
     return false
 }
 
 function checkEmail(email, user){
-    if(email != user){
+    if(email !== user){
         return true
     }
     return false
