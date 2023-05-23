@@ -1,5 +1,5 @@
 import { User } from "./User.js"
-import { isEmpty } from "./validatorFunctions.js"
+import { register } from "./validatorFunctions.js"
 
 const RegisteredUsers = []
 const name = document.getElementById("name")
@@ -28,7 +28,7 @@ buttonSingIn.addEventListener("click", ()=>{
     const currentConfirmPassword = confirmPassword.value
     let c = 0
 
-    isEmpty(RegisteredUsers, name, userName, email, password, confirmPassword)
+    register(RegisteredUsers, name, userName, email, password, confirmPassword)
 
 
 })

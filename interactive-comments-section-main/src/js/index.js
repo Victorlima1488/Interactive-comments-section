@@ -580,3 +580,5 @@ function getTextSizeElements() {
     return document.querySelectorAll('.textSize');
 }
 
+
+
