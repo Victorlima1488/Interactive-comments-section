@@ -1,6 +1,5 @@
 ![Logo](https://github.com/Victorlima1488/interactive-comments-section/blob/master/interactive-comments-section-main/readme/Logo.png)
 
-### In progress...
 ## Interactive-comments-section
 This application is an interactive comments section. It can be applied, for example, to company platforms so that teams can post comments with suggestions and tips. One of the goals of this project was to do it entirely with pure JavaScript, without using frameWorks.
 
